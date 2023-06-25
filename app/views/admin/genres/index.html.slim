@@ -1,0 +1,12 @@
+p style="color: green" = notice
+
+h1 Genres
+
+#genres
+  - @genres.each do |genre|
+    == render genre
+    p
+      = link_to "Edit this genre", edit_admin_genre_path(genre)
+    = button_to "Destroy this genre", admin_genre_path(genre), method: :delete
+
+= link_to "New genre", new_admin_genre_path
