@@ -1,0 +1,81 @@
+# inherit_from: ../.rubocop.yml
+require:
+  - rubocop-rspec
+  - rubocop-rails
+  - rubocop-factory_bot
+
+Style/Encoding:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 128
+  Exclude:
+    - "db/migrate/*.rb"
+    - "spec/**/*"
+
+AllCops:
+  SuggestExtensions: false
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/*'
+    - 'node_modules/**/*'
+    - 'scratch/**/*'
+
+Style/HashEachMethods:
+  Enabled: false
+      
+Style/HashTransformKeys:
+  Enabled: false
+    
+Style/HashTransformValues:
+  Enabled: false
+    
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Style/BlockComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'config/routes.rb'
+
+Bundler/OrderedGems:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/ImplicitSubject:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false

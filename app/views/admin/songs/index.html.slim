@@ -1,0 +1,11 @@
+p style="color: green" = notice
+
+h1 Songs
+
+#songs
+  - @songs.each do |song|
+    == render song
+    p
+      = link_to "Show this song", admin_song_path(song)
+
+= link_to "New song", new_admin_song_path
