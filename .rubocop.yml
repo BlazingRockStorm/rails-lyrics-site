@@ -27,6 +27,9 @@ AllCops:
 Style/HashEachMethods:
   Enabled: false
       
+Style/StringLiterals:
+  Exclude: 'db/schema.rb'
+
 Style/HashTransformKeys:
   Enabled: false
     
