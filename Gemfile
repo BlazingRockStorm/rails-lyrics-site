@@ -55,8 +55,6 @@ gem 'bootsnap', require: false
 # Use Slim
 gem 'html2slim'
 gem 'slim-rails'
-# Use FontAwesome
-gem 'font-awesome-sass', '~> 6.4.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
