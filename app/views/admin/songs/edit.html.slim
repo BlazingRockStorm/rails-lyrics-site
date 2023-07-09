@@ -9,31 +9,31 @@
 
       = form_with scope: :song, url: admin_song_path(@song), method: :patch do |form|
         - if @song.errors.any?
-          div style="color: red"
+          .alert.alert-danger
             h2 = "#{pluralize(@song.errors.count, "error")} prohibited this song from being saved:"
             ul
               - @song.errors.each do |error|
                 li = error.full_message
 
-        div
-          = form.label :name, style: "display: block"
-          = form.text_field :name
+        .mb-3
+          = form.label :name, class: 'form-label'
+          = form.text_field :name, class: 'form-control'
+
+        .mb-3
+          = form.label :lyric, class: 'form-label'
+          = form.text_area :lyric, class: 'form-control'
+
+        .mb-3
+          = form.label :genre_id, class: 'form-label'
+          = form.text_field :genre_id, class: 'form-control'
 
         div
-          = form.label :lyric, style: "display: block"
-          = form.text_area :lyric
-
-        div
-          = form.label :genre_id, style: "display: block"
-          = form.text_field :genre_id
-
-        div
-          = form.submit
+          = form.submit, class: 'btn btn-primary'
 
 
       br
 
       div
-        => link_to "Show this song", admin_song_path(@song)
+        => link_to "Show this song", admin_song_path(@song), class: 'btn btn-secondary'
         '|
-        =< link_to "Back to songs", admin_songs_path
+        =< link_to "Back to songs", admin_songs_path, class: 'btn btn-secondary'

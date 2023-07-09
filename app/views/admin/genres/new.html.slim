@@ -9,7 +9,7 @@
 
       = form_with scope: :genre, url: admin_genres_path do |form|
         - if @genre.errors.any?
-          div.alert.alert-danger
+          .alert.alert-danger
             h2 = "#{pluralize(@genre.errors.count, "error")} prohibited this genre from being saved:"
             ul
               - @genre.errors.each do |error|
