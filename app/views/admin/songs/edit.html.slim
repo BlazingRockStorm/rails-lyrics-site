@@ -25,7 +25,7 @@
 
         .mb-3
           = form.label :genre_id, class: 'form-label'
-          = select 'song', 'genre_id', Genre.all.collect {|genre| [ genre.name, genre.id ] }, class: 'form-control'
+          = form.select :genre_id, Genre.all.collect {|genre| [ genre.name, genre.id ] }, {}, class: 'form-control'
 
         div
           = form.submit 'Save song', class: 'btn btn-primary'
