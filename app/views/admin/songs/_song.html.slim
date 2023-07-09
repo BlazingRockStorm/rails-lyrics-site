@@ -3,8 +3,9 @@ div id="#{dom_id song}"
     strong Name:
     =< song.name
   p
+    strong Genre:
+    =< song.genre.name
+
+  p
     strong Lyric:
     =< song.lyric
-  p
-    strong Genre:
-    =< song.genre_id
