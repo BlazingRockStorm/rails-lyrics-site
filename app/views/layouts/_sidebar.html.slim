@@ -24,7 +24,9 @@
           a.nav-link.d-flex.align-items-center.gap-2[href="#"]
             i.bi.bi-gear-fill
             |  Settings 
-        li.nav-item.lyrics-site-sidenav-item
-          a.nav-link.d-flex.align-items-center.gap-2[href="#"]
-            i.bi.bi-box-arrow-right
-            |  Sign out 
+        - if user_signed_in?
+          li.nav-item.lyrics-site-sidenav-item
+            = button_to destroy_user_session_path, method: :delete, class: 'nav-link d-flex align-items-center gap-2 admin-signout' do
+              i.bi.bi-box-arrow-right
+              |  Sign out
+            end
