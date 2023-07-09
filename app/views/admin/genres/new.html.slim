@@ -1,21 +1,28 @@
-h1 New genre
+== render "layouts/navbar"
 
-= form_with scope: :genre, url: admin_genres_path do |form|
-  - if @genre.errors.any?
-    div style="color: red"
-      h2 = "#{pluralize(@genre.errors.count, "error")} prohibited this genre from being saved:"
-      ul
-        - @genre.errors.each do |error|
-          li = error.full_message
+.container-fluid
+  .row.lyrics-site-content
+    == render "layouts/sidebar"
 
-  div
-    = form.label :name, style: "display: block"
-    = form.text_field :name
+    main.col-md-9.col-lg-10.mt-2.mb-2
+      h1 New genre
 
-  div
-    = form.submit
+      = form_with scope: :genre, url: admin_genres_path do |form|
+        - if @genre.errors.any?
+          .alert.alert-danger
+            h2 = "#{pluralize(@genre.errors.count, "error")} prohibited this genre from being saved:"
+            ul
+              - @genre.errors.each do |error|
+                li = error.full_message
 
-br
+        .mb-3
+          = form.label :name, class: 'form-label'
+          = form.text_field :name, class: 'form-control'
 
-div
-  = link_to "Back to genres", admin_genres_path
+        div
+          = form.submit 'Create Genre', class: 'btn btn-primary'
+
+      br
+
+      div
+        = link_to "Back to genres", admin_genres_path, class: 'btn btn-secondary'

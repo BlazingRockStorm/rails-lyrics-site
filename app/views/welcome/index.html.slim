@@ -1,4 +1,11 @@
-h1
-  | Welcome#index
-p
-  | Find me in app/views/welcome/index.html.erb
+== render "layouts/navbar"
+
+.container-fluid
+  .row
+    == render "layouts/sidebar"
+
+    main.col-md-9.col-lg-10
+      .card.mb-2
+        .card-body
+          p.card-text
+            | Find me in app/views/welcome/index.html.erb

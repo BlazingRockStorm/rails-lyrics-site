@@ -1,11 +1,18 @@
-p style="color: green" = notice
+== render "layouts/navbar"
 
-h1 Songs
+.container-fluid
+  .row
+    == render "layouts/sidebar"
 
-#songs
-  - @songs.each do |song|
-    == render song
-    p
-      = link_to "Show this song", admin_song_path(song)
+    main.col-md-9.col-lg-10
+      p style="color: green" = notice
 
-= link_to "New song", new_admin_song_path
+      h1 Songs
+
+      #songs
+        - @songs.each do |song|
+          == render song
+          p
+            = link_to "Show this song", admin_song_path(song)
+
+      = link_to "New song", new_admin_song_path
