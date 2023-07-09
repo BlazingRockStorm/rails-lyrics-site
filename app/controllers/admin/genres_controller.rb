@@ -3,6 +3,7 @@
 module Admin
   class GenresController < ApplicationController
     before_action :set_genre, only: %i[show edit update destroy]
+    before_action :authenticate_user!
 
     # GET /genres or /genres.json
     def index
