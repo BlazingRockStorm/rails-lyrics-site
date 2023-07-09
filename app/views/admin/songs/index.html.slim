@@ -1,18 +1,40 @@
 == render "layouts/navbar"
 
 .container-fluid
-  .row
+  .row.lyrics-site-content
     == render "layouts/sidebar"
 
-    main.col-md-9.col-lg-10
-      p style="color: green" = notice
+    main.col-md-9.col-lg-10.mt-2.mb-2
+      - if notice
+        p.alert.alert-success = notice
 
       h1 Songs
 
-      #songs
-        - @songs.each do |song|
-          == render song
-          p
-            = link_to "Show this song", admin_song_path(song)
+      table.table.table-bordered#songs
+        thead.table-dark
+          tr
+            th[scope='col']
+              | #
+            th[scope='col']
+              | Name
+            th[scope='col']
+              | Genre
+            th[scope='col', colspan=3]
+              | Action
+        tbody.table-group-divider
+          - @songs.each do |song|
+              tr
+                td
+                  =< song.id
+                td
+                  =< song.name
+                td
+                  =< song.genre.name
+                td
+                  = link_to "Show this song", admin_song_path(song), class: 'btn btn-success'
+                td
+                  = link_to "Edit this song", edit_admin_song_path(song), class: 'btn btn-warning'
+                td
+                  = button_to "Delete this song", admin_song_path(song), method: :delete, class: 'btn btn-danger'
 
-      = link_to "New song", new_admin_song_path
+      = link_to "New song", new_admin_song_path, class: 'btn btn-primary'

@@ -1,10 +1,10 @@
 == render "layouts/navbar"
 
 .container-fluid
-  .row
+  .row.lyrics-site-content
     == render "layouts/sidebar"
 
-    main.col-md-9.col-lg-10
+    main.col-md-9.col-lg-10.mt-2.mb-2
       h1 Editing song
 
       = form_with scope: :song, url: admin_song_path(@song), method: :patch do |form|
@@ -25,10 +25,10 @@
 
         .mb-3
           = form.label :genre_id, class: 'form-label'
-          = form.text_field :genre_id, class: 'form-control'
+          = form.select :genre_id, Genre.all.collect {|genre| [ genre.name, genre.id ] }, {}, class: 'form-control'
 
         div
-          = form.submit, class: 'btn btn-primary'
+          = form.submit 'Save song', class: 'btn btn-primary'
 
 
       br
@@ -36,4 +36,4 @@
       div
         => link_to "Show this song", admin_song_path(@song), class: 'btn btn-secondary'
         '|
-        =< link_to "Back to songs", admin_songs_path, class: 'btn btn-secondary'
+        =< link_to "Back to songs", admin_songs_path, class: 'btn btn-outline-secondary'
