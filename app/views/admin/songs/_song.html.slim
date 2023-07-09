@@ -6,6 +6,6 @@ div id="#{dom_id song}"
     strong Genre:
     =< song.genre.name
 
-  p
+  div
     strong Lyric:
-    =< song.lyric
+    =< simple_format(song.lyric)
