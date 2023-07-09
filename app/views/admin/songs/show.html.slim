@@ -1,10 +1,17 @@
-p style="color: green" = notice
+== render "layouts/navbar"
 
-== render @song
+.container-fluid
+  .row
+    == render "layouts/sidebar"
 
-div
-  => link_to "Edit this song", edit_admin_song_path(@song)
-  '|
-  =< link_to "Back to songs", admin_songs_path
+    main.col-md-9.col-lg-10
+      p style="color: green" = notice
 
-  = button_to "Destroy this song", admin_song_path(@song), method: :delete
+      == render @song
+
+      div
+        => link_to "Edit this song", edit_admin_song_path(@song)
+        '|
+        =< link_to "Back to songs", admin_songs_path
+
+        = button_to "Destroy this song", admin_song_path(@song), method: :delete
