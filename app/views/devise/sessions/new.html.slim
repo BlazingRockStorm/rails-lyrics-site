@@ -12,7 +12,9 @@
                   | Sign in
               .card-body
                 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-                  = render "devise/shared/error_messages", resource: resource
+                  - if flash[:alert]
+                    p.alert.alert-danger
+                      = flash[:alert]
                   .form-floating.mb-3
                     = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'
                     = f.label :email
