@@ -4,7 +4,6 @@
 - PostgreSQL
 - Ruby 3.1
 - Rails 7
-- ReactJS for front-end
 - RSpec for test
 - Coding Convention, Code Coverage
 
@@ -32,11 +31,3 @@
 
 - The test for how the app works, so it must run more stable.
 - Take times.
-
-## TODO:
-
-- [x] Setup Github actions for Rubocop check -> Pronto
-- [x] Setup code coverage
-- [ ] Add an admin template
-- [x] Add songs
-- [ ] Setup JS
