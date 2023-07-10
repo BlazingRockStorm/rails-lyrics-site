@@ -81,5 +81,11 @@ RSpec/ImplicitSubject:
 RSpec/NamedSubject:
   Enabled: false
 
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
 Rails/I18nLocaleTexts:
   Enabled: false

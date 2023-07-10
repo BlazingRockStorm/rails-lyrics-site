@@ -3,10 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe 'Admin::Genres' do
+  before do
+    @admin = create(:user)
+  end
+
   describe 'GET #index' do
     let!(:genres) { create_list(:genre, 4) }
 
     it 'show all genres' do
+      sign_in @admin
       get admin_genres_path
       expect(response).to render_template(:index)
       expect(response.body).to include(genres[0].name, genres[1].name, genres[2].name)
@@ -17,6 +22,7 @@ RSpec.describe 'Admin::Genres' do
     let(:genre) { create(:genre) }
 
     it "show a genre's json" do
+      sign_in @admin
       get admin_genre_path(genre)
       expect(response).to have_http_status(:ok)
       expect(response.content_type).to include('application/json')
@@ -26,6 +32,7 @@ RSpec.describe 'Admin::Genres' do
 
   describe 'GET #new' do
     it 'leads to new genre page' do
+      sign_in @admin
       get new_admin_genre_path
       expect(response).to render_template(:new)
     end
@@ -33,6 +40,7 @@ RSpec.describe 'Admin::Genres' do
 
   describe 'POST #create' do
     it 'creates new genre' do
+      sign_in @admin
       post admin_genres_path, params: { genre: { name: 'New Genre' } }
       expect(response).to redirect_to admin_genres_path
       get admin_genres_path
@@ -44,6 +52,7 @@ RSpec.describe 'Admin::Genres' do
     let(:genre) { create(:genre) }
 
     it 'leads to edit genre page' do
+      sign_in @admin
       get edit_admin_genre_path(genre)
       expect(response).to render_template(:edit)
     end
@@ -53,6 +62,7 @@ RSpec.describe 'Admin::Genres' do
     let(:genre) { create(:genre) }
 
     it "edit the genre's name" do
+      sign_in @admin
       put admin_genre_path(genre), params: { id: genre.id, genre: { name: 'Editted Genre' } }
       expect(response).to redirect_to admin_genres_path
       get admin_genres_path
@@ -64,6 +74,7 @@ RSpec.describe 'Admin::Genres' do
     let(:genre) { create(:genre) }
 
     it 'destroy the genre' do
+      sign_in @admin
       delete admin_genre_path(genre), params: { id: genre.id }
       expect(response).to redirect_to admin_genres_path
       get admin_genres_path
