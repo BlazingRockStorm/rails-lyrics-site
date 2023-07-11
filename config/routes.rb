@@ -9,9 +9,5 @@ Rails.application.routes.draw do
     resources :genres
     resources :songs
   end
-
-  namespace :api do
-    resources :songs, only: %i[index show]
-  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
