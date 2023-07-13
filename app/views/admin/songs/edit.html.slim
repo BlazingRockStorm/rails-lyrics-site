@@ -20,12 +20,17 @@
           = form.text_field :name, class: 'form-control'
 
         .mb-3
-          = form.label :lyric, class: 'form-label'
-          = form.text_area :lyric, class: 'form-control'
+          = form.label :artist, class: 'form-label'
+          = form.collection_check_boxes :artist_ids, Artist.all, :id, :name, { hide_label: true }
 
         .mb-3
           = form.label :genre_id, class: 'form-label'
           = form.select :genre_id, Genre.all.collect {|genre| [ genre.name, genre.id ] }, {}, class: 'form-control'
+
+        .mb-3
+          = form.label :lyric, class: 'form-label'
+          = form.text_area :lyric, class: 'form-control'
+
 
         div
           = form.submit 'Save song', class: 'btn btn-primary'

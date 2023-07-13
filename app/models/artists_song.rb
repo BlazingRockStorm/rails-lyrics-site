@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ArtistSong < ApplicationRecord
+class ArtistsSong < ApplicationRecord
   belongs_to :song
   belongs_to :artist
 end
