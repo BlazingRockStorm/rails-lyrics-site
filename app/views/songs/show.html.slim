@@ -1,0 +1,17 @@
+- content_for :title, @song.name
+
+== render 'layouts/navbar_for_viewer'
+
+.container-fluid
+  .row.mt-2
+    main.col-md-9.col-lg-10
+      .card.mb-2
+        .card-title
+          h3 = @song.name
+        .card-body
+          strong Genre:
+          = @song.genre.name 
+          div
+            strong Lyric:
+            =< simple_format(@song.lyric)
+      =< link_to "Back to songs", songs_path, class: 'btn btn-secondary'

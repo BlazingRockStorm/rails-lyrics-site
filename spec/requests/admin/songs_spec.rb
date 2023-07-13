@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Songs' do
+RSpec.describe 'Admin::Songs' do
   before do
     @admin = create(:user)
   end
@@ -27,6 +27,7 @@ RSpec.describe 'Songs' do
       expect(response).to have_http_status(:ok)
       expect(response.body).to include(song.name)
       expect(response.body).to include(song.lyric)
+      expect(response.body).to include(song.genre.name)
     end
   end
 
