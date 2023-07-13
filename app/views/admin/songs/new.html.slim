@@ -21,7 +21,8 @@
 
         .mb-3
           = form.label :artist, class: 'form-label'
-          = form.collection_check_boxes :artist_ids, Artist.all, :id, :name, { hide_label: true }
+          br
+          = form.collection_check_boxes :artist_ids, Artist.all, :id, :name, { hide_label: true }, class: 'form-check-input'
 
         .mb-3
           = form.label :genre_id, class: 'form-label'
