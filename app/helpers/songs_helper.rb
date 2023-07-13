@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
 module SongsHelper
-  # Thêm vào đây các nghệ sĩ biểu diễn bài hát
+  def artists_list(artists)
+    artists.map(&:name).join(' x ')
+  end
 end

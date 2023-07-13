@@ -10,6 +10,9 @@
           .card-title
             h3 = song.name
           .card-body
-            = song.genre.name 
+            p
+              = artists_list song.artists
+            p
+              = song.genre.name 
             p
               = link_to 'View lyrics', song_path(song)
