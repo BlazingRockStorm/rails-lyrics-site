@@ -1,0 +1,33 @@
+== render "layouts/navbar"
+
+.container-fluid
+  .row.lyrics-site-content
+    == render "layouts/sidebar"
+
+    main.col-md-9.col-lg-10.mt-2.mb-2
+      h1 New artist
+
+      = form_with scope: :artist, url: admin_artists_path do |form|
+        - if @artist.errors.any?
+          .alert.alert-danger
+            h2 = "#{pluralize(@artist.errors.count, "error")} prohibited this artist from being saved:"
+            ul
+              - @artist.errors.each do |error|
+                li = error.full_message
+
+        .mb-3
+          = form.label :name, class: 'form-label'
+          = form.text_field :name, class: 'form-control'
+
+        .mb-3
+          = form.label :biography, class: 'form-label'
+          = form.text_area :biography, class: 'form-control'
+
+        div
+          = form.submit 'Create Artist', class: 'btn btn-primary'
+
+
+      br
+
+      div
+        = link_to "Back to artists", admin_artists_path, class: 'btn btn-secondary'

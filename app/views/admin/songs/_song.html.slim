@@ -3,6 +3,10 @@ div id="#{dom_id song}"
     strong Name:
     =< song.name
   p
+    strong Artist:
+    =< artists_list song.artists
+
+  p
     strong Genre:
     =< song.genre.name
 

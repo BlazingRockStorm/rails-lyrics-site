@@ -1,0 +1,18 @@
+== render "layouts/navbar"
+
+.container-fluid
+  .row.lyrics-site-content
+    == render "layouts/sidebar"
+
+    main.col-md-9.col-lg-10.mt-2.mb-2
+      - if notice
+        p.alert.alert-success = notice
+
+      == render @artist
+
+      .mb-2
+        => link_to "Edit this artist", edit_admin_artist_path(@artist), class: 'btn btn-warning'
+        '|
+        =< link_to "Back to artists", admin_artists_path, class: 'btn btn-secondary'
+
+      = button_to "Delete this artist", admin_artist_path(@artist), method: :delete, class: 'btn btn-danger'

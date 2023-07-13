@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'songs#index'
 
   namespace :admin do
+    resources :artists
     resources :genres
     resources :songs
   end
