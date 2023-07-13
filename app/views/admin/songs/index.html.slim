@@ -18,6 +18,8 @@
             th[scope='col']
               | Name
             th[scope='col']
+              | Artists
+            th[scope='col']
               | Genre
             th[scope='col', colspan=3]
               | Action
@@ -28,6 +30,8 @@
                   =< song.id
                 td
                   =< song.name
+                td
+                  =< artists_list song.artists
                 td
                   =< song.genre.name
                 td
