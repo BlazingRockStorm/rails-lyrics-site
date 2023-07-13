@@ -1,0 +1,36 @@
+== render "layouts/navbar"
+
+.container-fluid
+  .row.biographys-site-content
+    == render "layouts/sidebar"
+
+    main.col-md-9.col-lg-10.mt-2.mb-2
+      - if notice
+        p.alert.alert-success = notice
+
+      h1 Artists
+
+      table.table.table-bordered#artists
+        thead.table-dark
+          tr
+            th[scope='col']
+              | #
+            th[scope='col']
+              | Name
+            th[scope='col', colspan=3]
+              | Action
+        tbody.table-group-divider
+          - @artists.each do |artist|
+              tr
+                td
+                  =< artist.id
+                td
+                  =< artist.name
+                td
+                  = link_to "Show this artist", admin_artist_path(artist), class: 'btn btn-success'
+                td
+                  = link_to "Edit this artist", edit_admin_artist_path(artist), class: 'btn btn-warning'
+                td
+                  = button_to "Delete this artist", admin_artist_path(artist), method: :delete, class: 'btn btn-danger'
+
+      = link_to "New artist", new_admin_artist_path, class: 'btn btn-primary'

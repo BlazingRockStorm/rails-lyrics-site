@@ -1,0 +1,8 @@
+div id="#{dom_id artist}"
+  p
+    strong Name:
+    =< artist.name
+
+  div
+    strong Biography:
+    =< simple_format(artist.biography)
