@@ -2,9 +2,8 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  get 'welcome/index'
-  root 'welcome#index'
   resources :songs, only: [:index, :show]
+  root 'songs#index'
 
   namespace :admin do
     resources :genres

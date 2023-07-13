@@ -2,8 +2,14 @@
 
 == render 'layouts/navbar_for_viewer'
 
-- @songs.each do |song|
-  h2
-    = song.name
-  div
-    = song.genre.name
+.container-fluid
+  .row.mt-2
+    main.col-md-9.col-lg-10
+      - @songs.each do |song|
+        .card.mb-2
+          .card-title
+            h3 = song.name
+          .card-body
+            = song.genre.name 
+            p
+              = link_to 'View lyrics', song_path(song)
