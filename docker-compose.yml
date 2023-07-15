@@ -10,11 +10,13 @@ services:
 
   web:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails assets:precompile && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails assets:precompile && bundle exec puma -C config/puma.rb"
     volumes:
       - .:/rails-lyrics-site
-      - bundle:/usr/local/bundle
       - /rails-lyrics-site/node_modules
+      - bundle:/usr/local/bundle
+      - public-data:/rails-lyrics-site/public
+      - log-data:/rails-lyrics-site/log
     ports:
       - "3000:3000"
     depends_on:
@@ -22,3 +24,5 @@ services:
 
 volumes:
   bundle:
+  public-data:
+  log-data:
