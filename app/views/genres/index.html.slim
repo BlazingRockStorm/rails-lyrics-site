@@ -1,4 +1,16 @@
-h1 Genres#index
-p Find me in app/views/genres/index.html.slim
-- @genres.each do |genre|
-  = genre.name
+- content_for :title, 'Japanese lyrics site'
+
+== render 'layouts/navbar_for_viewer'
+
+h1 All Genres
+
+.container-fluid
+  .row.mt-2.lyrics-site-content
+    main.col-md-9.col-lg-10
+      - @genres.each do |genre|
+        .card.mb-2
+          .card-body
+            p
+              = link_to genre.name, genre_path(genre)
+
+== render 'layouts/footer'
