@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Songs' do
   describe 'GET #index' do
-    let!(:songs) { create_list(:song, 4) }
+    let!(:songs) { create_list(:song, 3) }
 
     it 'returns http success' do
       get songs_path

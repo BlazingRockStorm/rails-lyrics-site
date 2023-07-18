@@ -8,7 +8,7 @@ RSpec.describe 'Admin::Songs' do
   end
 
   describe 'GET #index' do
-    let!(:songs) { create_list(:song, 4) }
+    let!(:songs) { create_list(:song, 3) }
 
     it 'show all songs' do
       sign_in @admin
