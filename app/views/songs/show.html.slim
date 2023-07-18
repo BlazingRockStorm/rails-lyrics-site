@@ -3,7 +3,7 @@
 == render 'layouts/navbar_for_viewer'
 
 .container-fluid
-  .row.mt-2
+  .row.mt-2.lyrics-site-content
     main.col-md-9.col-lg-10
       .card.mb-2
         .card-title
@@ -19,3 +19,5 @@
             strong Lyric:
             =< simple_format(@song.lyric)
       =< link_to "Back to songs", songs_path, class: 'btn btn-secondary'
+
+== render 'layouts/footer'
