@@ -2,10 +2,13 @@
 
 == render 'layouts/navbar_for_viewer'
 
+h1
+  = @genre.name
+
 .container-fluid
   .row.mt-2.lyrics-site-content
     main.col-md-9.col-lg-10
-      - @songs.each do |song|
+      - @genre.songs.each do |song|
         .card.mb-2
           .card-title
             h3 = song.name
@@ -18,3 +21,4 @@
               = link_to 'View lyrics', song_path(song)
 
 == render 'layouts/footer'
+

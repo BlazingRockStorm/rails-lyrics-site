@@ -8,7 +8,7 @@ RSpec.describe 'Admin::Genres' do
   end
 
   describe 'GET #index' do
-    let!(:genres) { create_list(:genre, 4) }
+    let!(:genres) { create_list(:genre, 3) }
 
     it 'show all genres' do
       sign_in @admin
