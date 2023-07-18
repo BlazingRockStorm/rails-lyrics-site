@@ -21,7 +21,7 @@ RSpec.describe 'Admin::Artists' do
   describe 'GET #show' do
     let(:artist) { create(:artist) }
 
-    it "show a artist's json" do
+    it "show a artist's info" do
       sign_in @admin
       get admin_artist_path(artist)
       expect(response).to have_http_status(:ok)
