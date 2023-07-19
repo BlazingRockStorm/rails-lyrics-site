@@ -36,4 +36,5 @@
 /node_modules
 /test
 .DS_Store
+.env
 /coverage
