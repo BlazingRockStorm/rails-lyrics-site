@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails assets:precompile && bundle exec puma -C config/puma/production.rb"
+    volumes:
+      - .:/rails-lyrics-site
+      - /rails-lyrics-site/node_modules
+      - bundle:/usr/local/bundle
+      - public-data:/rails-lyrics-site/public
+      - log-data:/rails-lyrics-site/log
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+
+  nginx:
+    build:
+      context: containers/nginx
+    volumes:
+      - public-data:/rails-lyrics-site/public
+      - tmp-data:/rails-lyrics-site/tmp
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+
+volumes:
+  bundle:
+  public-data:
+  log-data:
+  tmp-data:
