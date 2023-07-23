@@ -17,6 +17,7 @@ services:
       - bundle:/usr/local/bundle
       - public-data:/rails-lyrics-site/public
       - log-data:/rails-lyrics-site/log
+      - tmp-data:/rails-lyrics-site/tmp
     ports:
       - "3000:3000"
     depends_on:
@@ -26,7 +27,7 @@ services:
     build: nginx
     volumes:
       - public-data:/rails-lyrics-site/public
-      - .:/rails-lyrics-site
+      - tmp-data:/rails-lyrics-site/tmp
     ports:
       - "80:80"
     depends_on:
@@ -36,3 +37,4 @@ volumes:
   bundle:
   public-data:
   log-data:
+  tmp-data:
