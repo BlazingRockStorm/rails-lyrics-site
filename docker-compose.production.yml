@@ -23,8 +23,7 @@ services:
       - db
 
   nginx:
-    build:
-      context: containers/nginx
+    build: nginx
     volumes:
       - public-data:/rails-lyrics-site/public
       - tmp-data:/rails-lyrics-site/tmp
