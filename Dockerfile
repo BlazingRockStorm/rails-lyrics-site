@@ -12,3 +12,6 @@ WORKDIR /rails-lyrics-site
 COPY Gemfile /rails-lyrics-site/Gemfile
 COPY Gemfile.lock /rails-lyrics-site/Gemfile.lock
 RUN bundle install
+
+COPY . /rails-lyrics-site
+RUN mkdir -p tmp/sockets
