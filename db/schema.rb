@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_17_075100) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_26_023526) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_17_075100) do
   create_table "artists_songs", id: false, force: :cascade do |t|
     t.bigint "song_id", null: false
     t.bigint "artist_id", null: false
+    t.integer "artist_type"
   end
 
   create_table "genres", force: :cascade do |t|
