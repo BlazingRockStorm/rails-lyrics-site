@@ -7,7 +7,7 @@ module Admin
 
     # GET /artists or /artists.json
     def index
-      @artists = Artist.all.order("id ASC")
+      @artists = Artist.all.order('id ASC')
     end
 
     # GET /artists/1 or /artists/1.json
