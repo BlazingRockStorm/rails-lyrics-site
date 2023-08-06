@@ -7,7 +7,7 @@ module Admin
 
     # GET /genres or /genres.json
     def index
-      @genres = Genre.all
+      @genres = Genre.all.order("id ASC")
     end
 
     # GET /genres/1 or /genres/1.json

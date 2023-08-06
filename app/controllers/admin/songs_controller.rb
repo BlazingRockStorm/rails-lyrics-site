@@ -7,7 +7,7 @@ module Admin
 
     # GET /songs or /songs.json
     def index
-      @songs = Song.all
+      @songs = Song.all.order("id ASC")
     end
 
     # GET /songs/1 or /songs/1.json
