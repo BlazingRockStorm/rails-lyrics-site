@@ -41,7 +41,7 @@
                 td
                   = button_to "Delete this song", admin_song_path(song), method: :delete, class: 'btn btn-danger'
 
-      = paginate @songs
+      = paginate @songs, theme: 'bootstrap-5'
       = link_to "New song", new_admin_song_path, class: 'btn btn-primary'
 
 == render 'layouts/footer'

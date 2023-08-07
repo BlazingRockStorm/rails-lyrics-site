@@ -2,8 +2,11 @@
 
 class GenresController < ApplicationController
   before_action :set_genre, only: :show
+  PAGE_LIMIT = 10
+
   def index
-    @genres = Genre.all
+    @genres = Genre.page(params[:page]).
+              per(PAGE_LIMIT)
   end
 
   def show; end

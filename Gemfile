@@ -59,6 +59,7 @@ gem 'slim-rails'
 gem 'devise'
 # Use Kaminari
 gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
