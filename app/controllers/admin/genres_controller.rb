@@ -4,10 +4,12 @@ module Admin
   class GenresController < ApplicationController
     before_action :set_genre, only: %i[show edit update destroy]
     before_action :authenticate_user!
+    PAGE_LIMIT = 10
 
     # GET /genres or /genres.json
     def index
-      @genres = Genre.all
+      @genres = Genre.page(params[:page]).
+                per(PAGE_LIMIT).order('id ASC')
     end
 
     # GET /genres/1 or /genres/1.json

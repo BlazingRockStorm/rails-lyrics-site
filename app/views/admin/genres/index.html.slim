@@ -31,6 +31,7 @@
               td
                 = button_to "Delete this genre", admin_genre_path(genre), method: :delete, class: 'btn btn-danger'
 
+      = paginate @genres, theme: 'bootstrap-5'
       = link_to "New genre", new_admin_genre_path, class: 'btn btn-primary'
 
 == render 'layouts/footer'

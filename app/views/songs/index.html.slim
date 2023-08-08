@@ -17,4 +17,6 @@
             p
               = link_to 'View lyrics', song_path(song)
 
+    = paginate @songs, theme: 'bootstrap-5'
+
 == render 'layouts/footer'

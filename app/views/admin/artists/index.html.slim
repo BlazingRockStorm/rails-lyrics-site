@@ -33,6 +33,7 @@
                 td
                   = button_to "Delete this artist", admin_artist_path(artist), method: :delete, class: 'btn btn-danger'
 
+      = paginate @artists, theme: 'bootstrap-5'
       = link_to "New artist", new_admin_artist_path, class: 'btn btn-primary'
 
 == render 'layouts/footer'

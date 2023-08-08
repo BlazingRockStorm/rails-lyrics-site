@@ -4,10 +4,12 @@ module Admin
   class ArtistsController < ApplicationController
     before_action :set_artist, only: %i[show edit update destroy]
     before_action :authenticate_user!
+    PAGE_LIMIT = 10
 
     # GET /artists or /artists.json
     def index
-      @artists = Artist.all
+      @artists = Artist.page(params[:page]).
+                 per(PAGE_LIMIT).order('id ASC')
     end
 
     # GET /artists/1 or /artists/1.json
