@@ -29,7 +29,7 @@
             = artists_song_form.select :artist_type, ArtistsSong.artist_types.keys.map { |type| [type.capitalize, type] }, {}, class: 'form-control'
 
           / Featuring Artist.
-          div[data-controller="artists-song"]
+          div[data-controller="artists_songs"]
             = form.fields_for :artists_songs, ArtistsSong.new, child_index: 'featuring_index' do |artists_song_form|
               .mb-3.featuring-field-template style="display: none;"
                 = artists_song_form.label :artist_id, class: 'form-label'
@@ -38,9 +38,9 @@
                 = artists_song_form.label :artist_type, class: 'form-label'
                 = artists_song_form.select :artist_type, ArtistsSong.artist_types.keys.map { |type| [type.capitalize, type] }, {}, class: 'form-control'
 
-            div[data-target="artists-song.fields"]
+            div[data-target="artists_songs.fields"]
               / This is where new "Featuring" fields will be added dynamically.
-          button.btn.btn-link[type="button",data-action="click->artists-song#addFeaturingField"]
+          button.btn.btn-link[type="button",data-action="click->artists_songs#addFeaturingField"]
             | Add Featuring Artist
 
         .mb-3
