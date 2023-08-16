@@ -12,6 +12,6 @@ jobs:
       with:
         path: https://demo-code-coverage.s3.ap-northeast-1.amazonaws.com/coverage
         
-    - name: Display structure of downloaded files
-      run: ls -R
-      working-directory: https://demo-code-coverage.s3.ap-northeast-1.amazonaws.com/coverage
+    # - name: Display structure of downloaded files
+    #   run: ls -R
+    #   working-directory: https://demo-code-coverage.s3.ap-northeast-1.amazonaws.com/coverage
