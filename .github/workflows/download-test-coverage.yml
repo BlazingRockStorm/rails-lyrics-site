@@ -8,12 +8,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Download object
-        uses: aws-actions/s3-download@v1
-        env:
-          # AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          # AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          REGION: ap-northeast-1
-          BUCKET: demo-code-coverage
-          OBJECT: /coverage
-          OUTPUT_FILE: ./coverage
+      - name: Download
+        uses: keithweaver/aws-s3-github-action@v1.0.0
+        with:
+          command: cp
+          source: s3://demo-code-coverage/coverage
+          destination: ./coverage/
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ap-northeast-1
