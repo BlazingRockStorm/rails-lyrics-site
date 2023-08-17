@@ -2,13 +2,10 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["fields"];
+  static targets = [ "output" ]
 
-  addFeaturingField(event) {
-    event.preventDefault();
-    const template = this.fieldsTarget.querySelector(".featuring-field-template");
-    const newField = document.createElement("div");
-    newField.innerHTML = template.innerHTML;
-    this.fieldsTarget.appendChild(newField);
+  greet() {
+    this.outputTarget.textContent =
+      `Hello, Quan!`
   }
 }

@@ -7,4 +7,4 @@ import { application } from './application'
 import HelloController from './hello_controller'
 import ArtistsSongsController from './artists_songs_controller'
 application.register('hello', HelloController)
-application.register('artists_songs', ArtistsSongsController)
+application.register('artists-songs', ArtistsSongsController)
