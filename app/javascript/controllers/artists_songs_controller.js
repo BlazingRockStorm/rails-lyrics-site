@@ -4,9 +4,11 @@ import { Controller } from '@hotwired/stimulus'
 export default class extends Controller {
   static targets = [ 'featuringArtistsList' ]
 
-  addFeaturingArtist() {
-    const item = document.createElement('p')
-    item.innerHTML = 'Hello' // thay ở đây là 1 cái template gì đó???
-    this.featuringArtistsListTarget.appendChild(item);
+  addFeaturingArtist(event) {
+    event.preventDefault();
+    const template = this.featuringArtistsListTarget.querySelector(".featuring-field-template");
+    const newField = document.createElement('div');
+    newField.innerHTML = template.innerHTML;
+    this.featuringArtistsListTarget.appendChild(newField);
   }
 }

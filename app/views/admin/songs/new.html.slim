@@ -1,8 +1,8 @@
-== render "layouts/navbar"
+== render 'layouts/navbar'
 
 .container-fluid
   .row.lyrics-site-content
-    == render "layouts/sidebar"
+    == render 'layouts/sidebar'
 
     main.col-md-9.col-lg-10.mt-2.mb-2
       h1 New song
@@ -22,16 +22,27 @@
         = form.fields_for :artists_songs do |artists_song_form|
           / Main Artist.
           .mb-3
-            = artists_song_form.label :artist_id, class: 'form-label'
+            = artists_song_form.label 'Main Artist', class: 'form-label'
             = artists_song_form.select :artist_id, Artist.all.collect { |artist| [artist.name, artist.id] }, {}, class: 'form-control'
 
             = artists_song_form.label :artist_type, class: 'form-label'
             = artists_song_form.select :artist_type, ArtistsSong.artist_types.keys.map { |type| [type.capitalize, type] }, {}, class: 'form-control'
 
-        .mb-3
-          div[data-controller="artists-songs"]
-            = button_tag 'Greet', type: 'button', data: { action: 'artists-songs#addFeaturingArtist' }
-            span[data-artists-songs-target="featuringArtistsList"]
+          div[data-controller='artists-songs']
+            = button_tag 'Add Featuring Artist', type: 'button', data: { action: 'artists-songs#addFeaturingArtist' }, class: 'btn btn-link mb-3'
+            div[data-artists-songs-target='featuringArtistsList']
+              .featuring-field-template[style="display: none;"]
+                / Feature Artist.
+                .mb-3
+                  .row
+                    .col-md-10.offset-md-1
+                      = artists_song_form.label 'Featuring Artist', class: 'form-label'
+                      = artists_song_form.select :artist_id, Artist.all.collect { |artist| [artist.name, artist.id] }, {}, class: 'form-control'
+
+                      = artists_song_form.label :artist_type, class: 'form-label'
+                      = artists_song_form.select :artist_type, ArtistsSong.artist_types.keys.map { |type| [type.capitalize, type] }, {}, class: 'form-control'
+                    .col-md-1
+                      span.bi.bi-x-square-fill
 
         .mb-3
           = form.label :genre_id, class: 'form-label'
@@ -48,6 +59,6 @@
       br
 
       div
-        = link_to "Back to songs", admin_songs_path, class: 'btn btn-secondary'
+        = link_to 'Back to songs', admin_songs_path, class: 'btn btn-secondary'
 
 == render 'layouts/footer'
