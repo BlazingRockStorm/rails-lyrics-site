@@ -33,7 +33,7 @@
             div[data-artists-songs-target='featuringArtistsList']
               .featuring-field-template[style="display: none;"]
                 / Feature Artist.
-                .mb-3
+                .mb-3[data-artists-songs-target='featuringArtist']
                   .row
                     .col-md-10.offset-md-1
                       = artists_song_form.label 'Featuring Artist', class: 'form-label'
@@ -42,7 +42,8 @@
                       = artists_song_form.label :artist_type, class: 'form-label'
                       = artists_song_form.select :artist_type, ArtistsSong.artist_types.keys.map { |type| [type.capitalize, type] }, {}, class: 'form-control'
                     .col-md-1
-                      span.bi.bi-x-square-fill
+                      = button_tag '', type: 'button', data: { action: 'artists-songs#removeFeaturingArtist' }, class: 'btn btn-danger' do
+                        span.bi.bi-x-square-fill
 
         .mb-3
           = form.label :genre_id, class: 'form-label'

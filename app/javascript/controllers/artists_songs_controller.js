@@ -2,7 +2,7 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = [ 'featuringArtistsList' ]
+  static targets = [ 'featuringArtistsList', 'featuringArtist' ]
 
   addFeaturingArtist(event) {
     event.preventDefault();
@@ -10,5 +10,9 @@ export default class extends Controller {
     const newField = document.createElement('div');
     newField.innerHTML = template.innerHTML;
     this.featuringArtistsListTarget.appendChild(newField);
+  }
+
+  removeFeaturingArtist() {
+    this.featuringArtistTarget.remove();
   }
 }
