@@ -1,11 +1,11 @@
 // app/javascript/controllers/artists_songs_controller.js
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = [ "output" ]
+  static targets = [ "featuringArtistsList" ]
 
-  greet() {
-    this.outputTarget.textContent =
+  addFeaturingArtist() {
+    this.featuringArtistsListTarget.textContent =
       `Hello, Quan!`
   }
 }

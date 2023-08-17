@@ -30,8 +30,8 @@
 
         .mb-3
           div[data-controller="artists-songs"]
-            = button_tag 'Greet', type: 'button', data: { action: 'artists-songs#greet' }
-            span[data-artists-songs-target="output"]
+            = button_tag 'Greet', type: 'button', data: { action: 'artists-songs#addFeaturingArtist' }
+            span[data-artists-songs-target="featuringArtistsList"]
 
         .mb-3
           = form.label :genre_id, class: 'form-label'
