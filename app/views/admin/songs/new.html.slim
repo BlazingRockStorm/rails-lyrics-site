@@ -55,6 +55,11 @@
           = form.submit 'Create Song', class: 'btn btn-primary'
 
 
+        .mb-3
+          div[data-controller="hello"]
+            = button_tag 'Greet', type: 'button', data: { action: 'hello#greet' }
+            span[data-hello-target="output"]
+
       br
 
       div
