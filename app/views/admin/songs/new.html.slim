@@ -24,9 +24,7 @@
           .mb-3
             = artists_song.label 'Main Artist', class: 'form-label'
             = artists_song.select :artist_id, Artist.all.collect { |artist| [artist.name, artist.id] }, {}, class: 'form-control'
-
-            = artists_song.label :artist_type, class: 'form-label'
-            = artists_song.select :artist_type, ArtistsSong.artist_types.keys.map { |type| [type.capitalize, type] }, {}, class: 'form-control'
+            = artists_song.hidden_field :artist_type, value: 'main'
 
           div[data-controller='artists-songs']
             = button_tag 'Add Featuring Artist', type: 'button', data: { action: 'artists-songs#addFeaturingArtist' }, class: 'btn btn-link mb-3'
@@ -38,9 +36,8 @@
                     .col-md-10.offset-md-1
                       = artists_song.label 'Featuring Artist', class: 'form-label'
                       = artists_song.select :artist_id, Artist.all.collect { |artist| [artist.name, artist.id] }, {}, class: 'form-control'
+                      = artists_song.hidden_field :artist_type, value: 'featuring'
 
-                      = artists_song.label :artist_type, class: 'form-label'
-                      = artists_song.select :artist_type, ArtistsSong.artist_types.keys.map { |type| [type.capitalize, type] }, {}, class: 'form-control'
                     .col-md-1
                       = button_tag '', type: 'button', data: { action: 'artists-songs#removeFeaturingArtist' }, class: 'btn btn-danger' do
                         span.bi.bi-x-square-fill
