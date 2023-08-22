@@ -19,7 +19,6 @@ module Admin
     # GET /songs/new
     def new
       @song = Song.new
-      @song.artists_songs.build
     end
 
     # GET /songs/1/edit
