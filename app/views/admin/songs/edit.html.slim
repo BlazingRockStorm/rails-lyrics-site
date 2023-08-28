@@ -35,8 +35,8 @@
                   .row
                     .col-md-10.offset-md-1
                       = artists_song.label 'Featuring Artist', class: 'form-label'
-                      = artists_song.select :artist_id, Artist.all.collect { |artist| [artist.name, artist.id] }, {}, class: 'form-control'
-                      = artists_song.hidden_field :artist_type, value: 'featuring'
+                      = select_tag 'song[artists_songs_attributes][][artist_id]', options_from_collection_for_select(Artist.all, 'id', 'name', '1'), class: 'form-control'
+                      = hidden_field_tag 'song[artists_songs_attributes][][artist_type]', 'featuring'
 
                     .col-md-1
                       = button_tag '', type: 'button', data: { action: 'artists-songs#removeFeaturingArtist' }, class: 'btn btn-danger' do
