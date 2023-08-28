@@ -19,9 +19,28 @@
           = form.label :name, class: 'form-label'
           = form.text_field :name, class: 'form-control'
 
-        .mb-3
-          = form.label :artist, class: 'form-label'
-          = form.collection_check_boxes :artist_ids, Artist.all, :id, :name, { hide_label: true }
+        = form.fields_for :artists_songs do |artists_song|
+          / Main Artist.
+          .mb-3
+            = artists_song.label 'Main Artist', class: 'form-label'
+            = artists_song.select :artist_id, Artist.all.collect { |artist| [artist.name, artist.id] }, {}, class: 'form-control'
+            = artists_song.hidden_field :artist_type, value: 'main'
+
+          div[data-controller='artists-songs']
+            = button_tag 'Add Featuring Artist', type: 'button', data: { action: 'artists-songs#addFeaturingArtist' }, class: 'btn btn-link mb-3'
+            div[data-artists-songs-target='featuringArtistsList']
+              .featuring-field-template[style="display: none;"]
+                / Feature Artist.
+                .mb-3[data-artists-songs-target='featuringArtist']
+                  .row
+                    .col-md-10.offset-md-1
+                      = artists_song.label 'Featuring Artist', class: 'form-label'
+                      = select_tag 'song[artists_songs_attributes][][artist_id]', options_from_collection_for_select(Artist.all, 'id', 'name', '1'), class: 'form-control'
+                      = hidden_field_tag 'song[artists_songs_attributes][][artist_type]', 'featuring'
+
+                    .col-md-1
+                      = button_tag '', type: 'button', data: { action: 'artists-songs#removeFeaturingArtist' }, class: 'btn btn-danger' do
+                        span.bi.bi-x-square-fill
 
         .mb-3
           = form.label :genre_id, class: 'form-label'
