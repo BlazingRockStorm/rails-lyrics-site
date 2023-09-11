@@ -2,6 +2,7 @@ div id="#{dom_id song}"
   p
     strong Name:
     =< song.name
+
   p
     strong Artist:
     =< artists_list song.artists
@@ -9,6 +10,14 @@ div id="#{dom_id song}"
   p
     strong Genre:
     =< song.genre.name
+
+  p
+    strong Link:
+    =< song.link
+
+  p
+    strong Tempo:
+    =< song.tempo.to_s + ' BPM'
 
   div
     strong Lyric:

@@ -19,6 +19,14 @@
           = form.label :name, class: 'form-label'
           = form.text_field :name, class: 'form-control'
 
+        .mb-3
+          = form.label :link, class: 'form-label'
+          = form.text_field :link, class: 'form-control'
+
+        .mb-3
+          = form.label :tempo, class: 'form-label'
+          = form.number_field :tempo, class: 'form-control'
+
         = form.fields_for :artists_songs do |artists_song|
           / Main Artist.
           .mb-3
