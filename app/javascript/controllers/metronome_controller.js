@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 
 const SOUND = 'https://daveceddia.com/freebies/react-metronome/click1.wav'
+// const SOUND = './audio/drumsticks.mp3'
 
 export default class MetronomeController extends Controller {
   static targets = ['bpm', 'tempoButton']
@@ -24,7 +25,7 @@ export default class MetronomeController extends Controller {
 
   start() {
     console.log(this.bpm)
-    this.timer = setInterval(this.beat.play(), (60 / this.bpm) * 1000)
+    this.timer = setInterval(() => this.beat.play(), (60 / this.bpm) * 1000)
     this.tempoButtonTarget.textContent = 'Stop metronome for the song'
   }
 
