@@ -1,10 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
 
-// const SOUND = 'https://daveceddia.com/freebies/react-metronome/click1.wav'
-// const SOUND = Rails.application.config.assets.prefix + 'audios/drumsticks.mp3'
-// const SOUND = "<%= asset_path('audios/drumsticks.mp3') %>"
-// const SOUND = '../../assets/audios/drumsticks.mp3'
-
 export default class MetronomeController extends Controller {
   static targets = ['bpm', 'tempoButton', 'sound']
 
