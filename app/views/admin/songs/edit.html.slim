@@ -27,11 +27,11 @@
           = form.label :tempo, class: 'form-label'
           = form.number_field :tempo, class: 'form-control'
 
-        = form.fields_for :artists_songs do |artists_song|
+        = form.fields_for @song.artists_songs[0] do |artists_song|
           / Main Artist.
           .mb-3
             = artists_song.label 'Main Artist', class: 'form-label'
-            = artists_song.select :artist_id, Artist.all.collect { |artist| [artist.name, artist.id] }, {}, class: 'form-control'
+            = artists_song.select :artist_id, Artist.all.collect { |artist| [artist.name, artist.id] }, {}, class: 'form-control', value: @song.artists[0].id
             = artists_song.hidden_field :artist_type, value: 'main'
 
           div[data-controller='artists-songs']
