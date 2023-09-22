@@ -31,7 +31,8 @@
           / Main Artist.
           .mb-3
             = artists_song.label 'Main Artist', class: 'form-label'
-            = select_tag 'song[artists_songs_attributes][][artist_id]', options_from_collection_for_select(Artist.all, 'id', 'name'), class: 'form-control', value: @song.artists[0].id
+            = select_tag 'song[artists_songs_attributes][][artist_id]', options_from_collection_for_select(Artist.all, 'id', 'name', @song.artists[0].id), class: 'form-control'
+            = hidden_field_tag 'song[artists_songs_attributes][][id]', @song.artists_songs[0].id
             = hidden_field_tag 'song[artists_songs_attributes][][artist_type]', 'main'
 
           div[data-controller='artists-songs']
