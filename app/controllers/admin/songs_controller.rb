@@ -4,10 +4,13 @@ module Admin
   class SongsController < ApplicationController
     before_action :set_song, only: %i[show edit update destroy]
     before_action :authenticate_user!
+    PAGE_LIMIT = 10
 
     # GET /songs or /songs.json
     def index
-      @songs = Song.all
+      @songs = Song.includes(%i[genre artists_songs artists]).
+               page(params[:page]).
+               per(PAGE_LIMIT).order('id ASC')
     end
 
     # GET /songs/1 or /songs/1.json
@@ -68,7 +71,8 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def song_params
-      params.require(:song).permit(:name, :lyric, :genre_id, artist_ids: [])
+      params.require(:song).permit(:name, :lyric, :genre_id, :link, :tempo,
+                                   artists_songs_attributes: [:id, :artist_id, :artist_type, :_destroy])
     end
   end
 end

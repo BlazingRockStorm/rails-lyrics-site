@@ -13,4 +13,6 @@ h1 All Genres
             p
               = link_to genre.name, genre_path(genre)
 
+  = paginate @genres, theme: 'bootstrap-5'
+
 == render 'layouts/footer'

@@ -8,13 +8,37 @@ RSpec.describe 'Admin::Songs' do
   end
 
   describe 'GET #index' do
-    let!(:songs) { create_list(:song, 3) }
+    describe 'show all songs' do
+      before do
+        stub_const('Admin::SongsController::PAGE_LIMIT', 3)
+        sign_in @admin
+      end
 
-    it 'show all songs' do
-      sign_in @admin
-      get admin_songs_path
-      expect(response).to render_template(:index)
-      expect(response.body).to include(songs[0].name, songs[1].name, songs[2].name)
+      let!(:songs) { create_list(:song, 4) }
+
+      context 'page 1' do
+        before do
+          get admin_songs_path, params: { page: 1 }
+        end
+
+        it 'show song 1, song 2 and song 3' do
+          expect(response).to render_template(:index)
+          expect(response.body).to include(songs[0].name, songs[1].name, songs[2].name)
+          expect(response.body).not_to include(songs[3].name)
+        end
+      end
+
+      context 'page 2' do
+        before do
+          get admin_songs_path, params: { page: 2 }
+        end
+
+        it 'show song 4' do
+          expect(response).to render_template(:index)
+          expect(response.body).to include(songs[3].name)
+          expect(response.body).not_to include(songs[0].name, songs[1].name, songs[2].name)
+        end
+      end
     end
   end
 

@@ -2,8 +2,12 @@
 
 class SongsController < ApplicationController
   before_action :set_song, only: :show
+  PAGE_LIMIT = 10
+
   def index
-    @songs = Song.all
+    @songs = Song.includes(%i[genre artists_songs artists]).
+             page(params[:page]).
+             per(PAGE_LIMIT)
   end
 
   def show; end

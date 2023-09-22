@@ -1,0 +1,25 @@
+name: Download Test Coverage Result
+on: [pull_request]
+
+jobs:
+  download-test-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get the coverage result
+        uses: keithweaver/aws-s3-github-action@v1.0.0
+        with:
+          command: cp
+          source: s3://demo-code-coverage/coverage/
+          destination: ./coverage/
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ap-northeast-1
+          flags: --recursive
+      - name: Push the coverage result to artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: ./coverage/
