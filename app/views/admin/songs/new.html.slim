@@ -31,7 +31,7 @@
           / Main Artist.
           .mb-3
             = artists_song.label 'Main Artist', class: 'form-label'
-            = select_tag 'song[artists_songs_attributes][][artist_id]', options_from_collection_for_select(Artist.all, 'id', 'name', '1'), class: 'form-control'
+            = select_tag 'song[artists_songs_attributes][][artist_id]', options_from_collection_for_select(Artist.all, 'id', 'name'), class: 'form-control'
             = hidden_field_tag 'song[artists_songs_attributes][][artist_type]', 'main'
 
           div[data-controller='artists-songs']
@@ -43,8 +43,9 @@
                   .row
                     .col-md-10.offset-md-1
                       = artists_song.label 'Featuring Artist', class: 'form-label'
-                      = select_tag 'song[artists_songs_attributes][][artist_id]', options_from_collection_for_select(Artist.all, 'id', 'name', '1'), class: 'form-control', disabled: true
+                      = select_tag 'song[artists_songs_attributes][][artist_id]', options_from_collection_for_select(Artist.all, 'id', 'name'), class: 'form-control', disabled: true
                       = hidden_field_tag 'song[artists_songs_attributes][][artist_type]', 'featuring', disabled: true
+                      = hidden_field_tag 'song[artists_songs_attributes][][_destroy]', '0', disabled: true
 
                     .col-md-1
                       = button_tag '', type: 'button', data: { action: 'artists-songs#removeFeaturingArtist' }, class: 'btn btn-danger' do
@@ -56,7 +57,7 @@
 
         .mb-3
           = form.label :lyric, class: 'form-label'
-          = form.text_area :lyric, class: 'form-control'
+          = form.text_area :lyric, class: 'form-control', rows: 20
 
         div
           = form.submit 'Create Song', class: 'btn btn-primary'

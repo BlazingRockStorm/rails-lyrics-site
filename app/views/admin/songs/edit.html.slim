@@ -27,12 +27,13 @@
           = form.label :tempo, class: 'form-label'
           = form.number_field :tempo, class: 'form-control'
 
-        = form.fields_for :artists_songs do |artists_song|
+        = form.fields_for @song.artists_songs[0] do |artists_song|
           / Main Artist.
           .mb-3
             = artists_song.label 'Main Artist', class: 'form-label'
-            = artists_song.select :artist_id, Artist.all.collect { |artist| [artist.name, artist.id] }, {}, class: 'form-control'
-            = artists_song.hidden_field :artist_type, value: 'main'
+            = select_tag 'song[artists_songs_attributes][][artist_id]', options_from_collection_for_select(Artist.all, 'id', 'name', @song.artists[0].id), class: 'form-control'
+            = hidden_field_tag 'song[artists_songs_attributes][][id]', @song.artists_songs[0].id
+            = hidden_field_tag 'song[artists_songs_attributes][][artist_type]', 'main'
 
           div[data-controller='artists-songs']
             = button_tag 'Add Featuring Artist', type: 'button', data: { action: 'artists-songs#addFeaturingArtist' }, class: 'btn btn-link mb-3'
@@ -43,12 +44,30 @@
                   .row
                     .col-md-10.offset-md-1
                       = artists_song.label 'Featuring Artist', class: 'form-label'
-                      = select_tag 'song[artists_songs_attributes][][artist_id]', options_from_collection_for_select(Artist.all, 'id', 'name', '1'), class: 'form-control', disabled: true
+                      = select_tag 'song[artists_songs_attributes][][artist_id]', options_from_collection_for_select(Artist.all, 'id', 'name'), class: 'form-control', disabled: true
+
                       = hidden_field_tag 'song[artists_songs_attributes][][artist_type]', 'featuring', disabled: true
+                      = hidden_field_tag 'song[artists_songs_attributes][][_destroy]', '0', disabled: true
 
                     .col-md-1
                       = button_tag '', type: 'button', data: { action: 'artists-songs#removeFeaturingArtist' }, class: 'btn btn-danger' do
                         span.bi.bi-x-square-fill
+
+              - for i in 1...@song.artists.length
+                .featuring-field-template[id="song_artists_#{i}"]
+                  / Feature Artist.
+                  .mb-3[data-artists-songs-target='featuringArtist']
+                    .row
+                      .col-md-10.offset-md-1
+                        = artists_song.label 'Featuring Artist', class: 'form-label'
+                        = select_tag 'song[artists_songs_attributes][][artist_id]', options_from_collection_for_select(Artist.all, 'id', 'name', @song.artists[i].id), class: 'form-control'
+                        = hidden_field_tag 'song[artists_songs_attributes][][id]', @song.artists_songs[i].id
+                        = hidden_field_tag 'song[artists_songs_attributes][][artist_type]', 'featuring'
+                        = hidden_field_tag 'song[artists_songs_attributes][][_destroy]', '0'
+
+                      .col-md-1
+                        = button_tag '', type: 'button', data: { action: 'artists-songs#removeFeaturingArtist', 'artists-songs-template-param': "song_artists_#{i}" }, class: 'btn btn-danger' do
+                          span.bi.bi-x-square-fill
 
         .mb-3
           = form.label :genre_id, class: 'form-label'
@@ -56,7 +75,7 @@
 
         .mb-3
           = form.label :lyric, class: 'form-label'
-          = form.text_area :lyric, class: 'form-control'
+          = form.text_area :lyric, class: 'form-control', rows: 20
 
 
         div

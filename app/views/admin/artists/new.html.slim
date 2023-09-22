@@ -21,7 +21,7 @@
 
         .mb-3
           = form.label :biography, class: 'form-label'
-          = form.text_area :biography, class: 'form-control'
+          = form.text_area :biography, class: 'form-control', rows: 20
 
         div
           = form.submit 'Create Artist', class: 'btn btn-primary'
