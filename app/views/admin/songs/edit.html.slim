@@ -31,8 +31,8 @@
           / Main Artist.
           .mb-3
             = artists_song.label 'Main Artist', class: 'form-label'
-            = artists_song.select :artist_id, Artist.all.collect { |artist| [artist.name, artist.id] }, {}, class: 'form-control', value: @song.artists[0].id
-            = artists_song.hidden_field :artist_type, value: 'main'
+            = select_tag 'song[artists_songs_attributes][][artist_id]', options_from_collection_for_select(Artist.all, 'id', 'name'), class: 'form-control'
+            = hidden_field_tag 'song[artists_songs_attributes][][artist_type]', 'main'
 
           div[data-controller='artists-songs']
             = button_tag 'Add Featuring Artist', type: 'button', data: { action: 'artists-songs#addFeaturingArtist' }, class: 'btn btn-link mb-3'
