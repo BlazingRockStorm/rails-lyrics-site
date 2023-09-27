@@ -15,3 +15,12 @@ RUN bundle install
 
 COPY . /rails-lyrics-site
 RUN mkdir -p tmp/sockets
+
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+
+VOLUME /rails-lyrics-site/public
+VOLUME /rails-lyrics-site/tmp
+
+CMD bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma/production.rb"

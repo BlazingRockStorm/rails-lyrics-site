@@ -3,19 +3,22 @@ version: '3'
 services:
   web:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails assets:precompile && bundle exec puma -C config/puma/production.rb -e production"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma/production.rb -e production"
     volumes:
       - .:/rails-lyrics-site
       - /rails-lyrics-site/node_modules
       - bundle:/usr/local/bundle
       - log-data:/rails-lyrics-site/log
+      - tmp-data:/rails-lyrics-site/tmp
+      - public-data:/rails-lyrics-site/public
     ports:
       - "3000:3000"
 
   nginx:
     build: nginx
     volumes:
-      - .:/rails-lyrics-site
+      - tmp-data:/rails-lyrics-site/tmp
+      - public-data:/rails-lyrics-site/public
     ports:
       - "80:80"
     depends_on:
@@ -24,3 +27,5 @@ services:
 volumes:
   bundle:
   log-data:
+  tmp-data:
+  public-data:
