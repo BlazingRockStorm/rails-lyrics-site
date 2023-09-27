@@ -14,6 +14,8 @@ services:
     volumes:
       - .:/rails-lyrics-site
       - bundle:/usr/local/bundle
+      - tmp-data:/rails-lyrics-site/tmp
+      - public-data:/rails-lyrics-site/public
     ports:
       - "3000:3000"
     depends_on:
@@ -21,3 +23,5 @@ services:
 
 volumes:
   bundle:
+  tmp-data:
+  public-data:
