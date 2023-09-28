@@ -1,14 +1,8 @@
 version: '3'
 
 services:
-  db:
-    image: postgres
-    volumes:
-      - ./tmp/db:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: password
 
-  app:
+  app-runner:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails assets:precompile && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
@@ -18,8 +12,6 @@ services:
       - public-data:/rails-lyrics-site/public
     ports:
       - "3000:3000"
-    depends_on:
-      - db
 
 volumes:
   bundle:

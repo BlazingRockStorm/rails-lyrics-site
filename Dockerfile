@@ -24,3 +24,4 @@ VOLUME /rails-lyrics-site/public
 VOLUME /rails-lyrics-site/tmp
 
 CMD bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma/production.rb"
+EXPOSE 3000
