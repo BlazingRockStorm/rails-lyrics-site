@@ -11,17 +11,13 @@ min_threads_count = ENV.fetch('RAILS_MIN_THREADS') { max_threads_count }
 threads min_threads_count, max_threads_count
 
 # Specifies the `worker_timeout` threshold that Puma will use to wait before
-# terminating a worker in development environments.
+# terminating a worker in production environments.
 #
-worker_timeout 3600 if ENV.fetch('RAILS_ENV', 'development') == 'development'
-
-# Specifies the `port` that Puma will listen on to receive requests; default is 3000.
-#
-port ENV.fetch('PORT', 3000)
+worker_timeout 3600 if ENV.fetch('RAILS_ENV', 'production') == 'production'
 
 # Specifies the `environment` that Puma will run in.
 #
-environment ENV.fetch('RAILS_ENV', 'development')
+environment ENV.fetch('RAILS_ENV', 'production')
 
 
 app_root = File.expand_path('../../..', __FILE__)
@@ -34,7 +30,7 @@ stdout_redirect "#{app_root}/log/puma.stdout.log", "#{app_root}/log/puma.stderr.
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
-# workers ENV.fetch("WEB_CONCURRENCY") { 2 }
+workers ENV.fetch("WEB_CONCURRENCY") { 5 }
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
