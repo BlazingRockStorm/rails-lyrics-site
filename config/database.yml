@@ -87,7 +87,7 @@ test:
 #
 production:
   <<: *default
-  database: rails_lyrics_site_development
+  database: rails_lyrics_site_production
   host: <%= ENV["DB_HOST"] %>
   username: <%= ENV["DB_USERNAME"] %>
   password: <%= ENV["DB_PASSWORD"] %>
