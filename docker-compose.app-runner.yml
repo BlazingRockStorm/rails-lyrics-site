@@ -4,7 +4,7 @@ services:
 
   app-runner:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails assets:precompile && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/rails-lyrics-site
       - bundle:/usr/local/bundle
