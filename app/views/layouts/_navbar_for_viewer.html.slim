@@ -12,8 +12,7 @@ nav.navbar.navbar-expand-lg[style='background-color: #e3f2fd;' data-bs-theme='li
         li.nav-item
           = link_to 'Genres', genres_path, class: 'nav-link'
         li.nav-item
-          a.nav-link[href='#']
-            | About
+          = link_to 'About', about_path, class: 'nav-link'
       form.d-flex[role='search']
         input.form-control.me-2[type='search' placeholder='Search' aria-label='Search']
         button.btn.btn-outline-primary[type='submit']
