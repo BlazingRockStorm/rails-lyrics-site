@@ -39,7 +39,7 @@ RSpec.describe 'Artists' do
 
   describe 'GET #show' do
     let(:artist) { create(:artist) }
-    let!(:songs) { create_list(:song, 3, artists:[artist]) }
+    let!(:songs) { create_list(:song, 3, artists: [artist]) }
 
     it "show a artist's info" do
       get artist_path(artist)
