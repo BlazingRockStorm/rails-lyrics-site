@@ -8,8 +8,7 @@ nav.navbar.navbar-expand-lg[style='background-color: #e3f2fd;' data-bs-theme='li
         li.nav-item
           = link_to 'Home', root_path, class: 'nav-link active'
         li.nav-item
-          a.nav-link[href='#']
-            | Artists
+          = link_to 'Artists', artists_path, class: 'nav-link'
         li.nav-item
           = link_to 'Genres', genres_path, class: 'nav-link'
         li.nav-item
