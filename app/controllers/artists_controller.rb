@@ -6,7 +6,7 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.page(params[:page]).
-              per(PAGE_LIMIT)
+               per(PAGE_LIMIT)
   end
 
   def show; end
