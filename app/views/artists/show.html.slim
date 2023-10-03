@@ -10,6 +10,16 @@
 
       p
         = @artist.biography
+
+      h2 Albums
+      - @artist.albums.each do |album|
+        .card.mb-2
+          .card-body
+            h3 = album.name
+            p
+              = link_to 'View album', album_path(album)
+
+      h2 Songs
       - @artist.songs.each do |song|
         .card.mb-2
           .card-title

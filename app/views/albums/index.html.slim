@@ -1,0 +1,20 @@
+- content_for :title, 'Japanese lyrics site'
+
+== render 'layouts/navbar_for_viewer'
+
+h1 All Albums
+
+.container-fluid
+  .row.mt-2.lyrics-site-content
+    main.col-md-9.col-lg-10
+      - @albums.each do |album|
+        .card.mb-2
+          .card-body
+            p
+              = link_to album.name, album_path(album)
+            p
+              = album.artist.name
+
+  = paginate @albums, theme: 'bootstrap-5'
+
+== render 'layouts/footer'
