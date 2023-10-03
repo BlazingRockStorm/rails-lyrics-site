@@ -14,6 +14,8 @@ h1 All Albums
               = link_to album.name, album_path(album)
             p
               = album.artist.name
+            p
+              = album.release_year
 
   = paginate @albums, theme: 'bootstrap-5'
 

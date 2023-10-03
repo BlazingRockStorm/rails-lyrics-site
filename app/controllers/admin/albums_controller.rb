@@ -70,7 +70,7 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def album_params
-      params.require(:album).permit(:name, :artist_id)
+      params.require(:album).permit(:name, :artist_id, :release_year)
     end
   end
 end

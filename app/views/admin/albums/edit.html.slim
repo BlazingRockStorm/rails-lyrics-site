@@ -23,6 +23,10 @@
           = form.label :artist_id, class: 'form-label'
           = form.select :artist_id, Artist.all.collect {|artist| [ artist.name, artist.id ] }, {}, class: 'form-control'
 
+        .mb-3
+          = form.label :release_year, class: 'form-label'
+          = form.number_field :release_year, class: 'form-control'
+
         div
           = form.submit 'Save Album', class: 'btn btn-primary'
 

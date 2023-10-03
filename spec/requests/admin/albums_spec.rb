@@ -51,6 +51,7 @@ RSpec.describe 'Admin::Albums' do
       expect(response).to have_http_status(:ok)
       expect(response.body).to include(album.name)
       expect(response.body).to include(album.artist.name)
+      expect(response.body).to include(album.release_year.to_s)
     end
   end
 
@@ -65,7 +66,7 @@ RSpec.describe 'Admin::Albums' do
   describe 'POST #create' do
     it 'creates new album' do
       sign_in @admin
-      post admin_albums_path, params: { album: { name: 'New album' } }
+      post admin_albums_path, params: { album: { name: 'New album', release_year: 2001 } }
       get admin_albums_path
       expect(response.body).to include('New album')
     end
@@ -86,10 +87,11 @@ RSpec.describe 'Admin::Albums' do
 
     it "edit the album's name" do
       sign_in @admin
-      put admin_album_path(album), params: { id: album.id, album: { name: 'Editted album' } }
+      put admin_album_path(album), params: { id: album.id, album: { name: 'Editted album', release_year: 2001 } }
       expect(response).to redirect_to admin_album_path(album)
       get admin_album_path(album)
       expect(response.body).to include('Editted album')
+      expect(response.body).to include('2001')
     end
   end
 

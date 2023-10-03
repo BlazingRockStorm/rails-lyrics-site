@@ -46,6 +46,7 @@ RSpec.describe 'Albums' do
         get album_path(album)
         expect(response).to have_http_status(:ok)
         expect(response.body).to include(album.name)
+        expect(response.body).to include(album.release_year.to_s)
         expect(response.body).to include(album.artist.name)
         # expect(response.body).to include(songs[0].name, songs[1].name, songs[2].name)
       end
