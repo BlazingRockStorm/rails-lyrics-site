@@ -12,12 +12,14 @@
         = @artist.biography
 
       h2 Albums
-      - @artist.albums.each do |album|
-        .card.mb-2
-          .card-body
-            h3 = album.name
-            p
-              = link_to 'View album', album_path(album)
+      .row
+        - @artist.albums.each do |album|
+          .col-md-4
+            .card.mb-2
+              .card-body
+                h3 = album.name
+                p
+                  = link_to 'View album', album_path(album)
 
       h2 Songs
       - @artist.songs.each do |song|
