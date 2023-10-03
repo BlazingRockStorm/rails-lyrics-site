@@ -8,6 +8,10 @@
 - Coding Convention, Code Coverage
 
 ## Why
+### The idea
+ The idea is a lyrics that show the lyrics and the tempo of the song.
+ 
+ Aim to the singers and musicians when practicing.
 
 ### Github:
 
