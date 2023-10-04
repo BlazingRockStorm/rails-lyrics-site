@@ -6,23 +6,12 @@
   .row.mt-2.lyrics-site-content
     main.col-md-9.col-lg-10
       h1
-        = @artist.name
+        = @album.name
+      p
+        = @album.release_year
 
       p
-        = @artist.biography
-
-      h2 Albums
-      .row
-        - @albums.each do |album|
-          .col-md-4
-            .card.mb-2
-              .card-body
-                h3 = album.name
-                p = album.release_year
-                p
-                  = link_to 'View album', album_path(album)
-
-      h2 Songs
+        = link_to @album.artist.name, artist_path(@album.artist)
       - @songs.each do |song|
         .card.mb-2
           .card-title

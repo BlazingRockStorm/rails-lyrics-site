@@ -1,0 +1,39 @@
+== render "layouts/navbar"
+
+.container-fluid
+  .row.lyrics-site-content
+    == render "layouts/sidebar"
+
+    main.col-md-9.col-lg-10.mt-2.mb-2
+      - if notice
+        p.alert.alert-success = notice
+
+      h1 Albums
+
+      table.table.table-bordered#albums
+        thead.table-dark
+          tr
+            th[scope='col']
+              | #
+            th[scope='col']
+              | Name
+            th[scope='col', colspan=3]
+              | Action
+        tbody.table-group-divider
+          - @albums.each do |album|
+            tr
+              td
+                =< album.id
+              td
+                =< album.name
+              td
+                = link_to "Show this album", admin_album_path(album), class: 'btn btn-success'
+              td
+                = link_to "Edit this album", edit_admin_album_path(album), class: 'btn btn-warning'
+              td
+                = button_to "Delete this album", admin_album_path(album), method: :delete, class: 'btn btn-danger'
+
+      = paginate @albums, theme: 'bootstrap-5'
+      = link_to "New album", new_admin_album_path, class: 'btn btn-primary'
+
+== render 'layouts/footer'

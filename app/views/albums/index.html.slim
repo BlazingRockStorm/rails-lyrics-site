@@ -2,22 +2,21 @@
 
 == render 'layouts/navbar_for_viewer'
 
-h1
-  = @genre.name
+h1 All Albums
 
 .container-fluid
   .row.mt-2.lyrics-site-content
     main.col-md-9.col-lg-10
-      - @songs.each do |song|
+      - @albums.each do |album|
         .card.mb-2
-          .card-title
-            h3 = song.name
           .card-body
             p
-              = artists_list song.artists
+              = link_to album.name, album_path(album)
             p
-              = song.genre.name 
+              = album.artist.name
             p
-              = link_to 'View lyrics', song_path(song)
+              = album.release_year
+
+  = paginate @albums, theme: 'bootstrap-5'
 
 == render 'layouts/footer'

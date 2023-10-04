@@ -38,14 +38,23 @@ RSpec.describe 'Genres' do
   end
 
   describe 'GET #show' do
-    let(:genre) { create(:genre) }
-    let!(:songs) { create_list(:song, 3, genre:) }
+    context 'find and return an genre' do
+      let(:genre) { create(:genre) }
+      let!(:songs) { create_list(:song, 3, genre:) }
 
-    it "show a genre's info" do
-      get genre_path(genre)
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to include(genre.name)
-      expect(response.body).to include(songs[0].name, songs[1].name, songs[2].name)
+      it "show a genre's info" do
+        get genre_path(genre)
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include(genre.name)
+        expect(response.body).to include(songs[0].name, songs[1].name, songs[2].name)
+      end
+    end
+
+    context 'not found and return a genre' do
+      it 'not found' do
+        get genre_path(0)
+        expect(response).to have_http_status(:not_found)
+      end
     end
   end
 end

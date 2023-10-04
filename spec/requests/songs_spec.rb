@@ -38,14 +38,23 @@ RSpec.describe 'Songs' do
   end
 
   describe 'GET #show' do
-    let(:song) { create(:song) }
+    context 'find and return an song' do
+      let(:song) { create(:song) }
 
-    it 'returns http success' do
-      get song_path(song)
-      expect(response).to have_http_status(:success)
-      expect(response.body).to include(song.name)
-      expect(response.body).to include(song.lyric)
-      expect(response.body).to include(song.genre.name)
+      it 'returns http success' do
+        get song_path(song)
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include(song.name)
+        expect(response.body).to include(song.lyric)
+        expect(response.body).to include(song.genre.name)
+      end
+    end
+
+    context 'not found and return a song' do
+      it 'not found' do
+        get song_path(0)
+        expect(response).to have_http_status(:not_found)
+      end
     end
   end
 end

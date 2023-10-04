@@ -38,15 +38,26 @@ RSpec.describe 'Artists' do
   end
 
   describe 'GET #show' do
-    let(:artist) { create(:artist) }
-    let!(:songs) { create_list(:song, 3, artists: [artist]) }
+    context 'find and return an artist' do
+      let(:artist) { create(:artist) }
+      let!(:songs) { create_list(:song, 3, artists: [artist]) }
+      let!(:albums) { create_list(:album, 3, artist:) }
 
-    it "show a artist's info" do
-      get artist_path(artist)
-      expect(response).to have_http_status(:ok)
-      expect(response.body).to include(artist.name)
-      expect(response.body).to include(artist.biography)
-      expect(response.body).to include(songs[0].name, songs[1].name, songs[2].name)
+      it "show a artist's info" do
+        get artist_path(artist)
+        expect(response).to have_http_status(:ok)
+        expect(response.body).to include(artist.name)
+        expect(response.body).to include(artist.biography)
+        expect(response.body).to include(songs[0].name, songs[1].name, songs[2].name)
+        expect(response.body).to include(albums[0].name, albums[1].name, albums[2].name)
+      end
+    end
+
+    context 'not found and return an artist' do
+      it 'not found' do
+        get artist_path(0)
+        expect(response).to have_http_status(:not_found)
+      end
     end
   end
 end

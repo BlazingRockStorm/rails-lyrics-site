@@ -2,6 +2,7 @@
 
 class Song < ApplicationRecord
   belongs_to :genre
+  belongs_to :album
   has_many :artists_songs, dependent: :destroy
   has_many :artists, through: :artists_songs
   validates :name, presence: true

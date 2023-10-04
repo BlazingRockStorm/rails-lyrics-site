@@ -9,7 +9,9 @@ class GenresController < ApplicationController
               per(PAGE_LIMIT)
   end
 
-  def show; end
+  def show
+    @songs = @genre.songs.includes([:artists, :album])
+  end
 
   private
 

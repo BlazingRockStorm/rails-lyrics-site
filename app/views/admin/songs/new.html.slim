@@ -56,6 +56,10 @@
           = form.select :genre_id, Genre.all.collect {|genre| [ genre.name, genre.id ] }, {}, class: 'form-control'
 
         .mb-3
+          = form.label :album_id, class: 'form-label'
+          = form.select :album_id, Album.all.collect {|album| [ album.name, album.id ] }, {}, class: 'form-control'
+
+        .mb-3
           = form.label :lyric, class: 'form-label'
           = form.text_area :lyric, class: 'form-control', rows: 20
 
