@@ -13,6 +13,9 @@
             strong Genre:
             = link_to @song.genre.name, genre_path(@song.genre)
           p
+            strong Album:
+            = link_to @song.album.name, album_path(@song.album)
+          p
             strong Artists:
             = artists_list @song.artists
           p
