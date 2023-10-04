@@ -40,7 +40,7 @@ RSpec.describe 'Albums' do
   describe 'GET #show' do
     context 'find and return an album' do
       let(:album) { create(:album) }
-      # let!(:songs) { create_list(:song, 3, album:) }
+      let!(:songs) { create_list(:song, 3, album:) }
 
       it "show a album's info" do
         get album_path(album)
@@ -48,7 +48,7 @@ RSpec.describe 'Albums' do
         expect(response.body).to include(album.name)
         expect(response.body).to include(album.release_year.to_s)
         expect(response.body).to include(album.artist.name)
-        # expect(response.body).to include(songs[0].name, songs[1].name, songs[2].name)
+        expect(response.body).to include(songs[0].name, songs[1].name, songs[2].name)
       end
     end
 

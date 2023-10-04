@@ -5,5 +5,6 @@ FactoryBot.define do
     sequence(:name) { |n| "Song#{n}_name" }
     sequence(:lyric) { |n| "Song#{n}_lyric" }
     genre
+    album
   end
 end

@@ -5,11 +5,13 @@ class AlbumsController < ApplicationController
   PAGE_LIMIT = 10
 
   def index
-    @albums = Album.page(params[:page]).
+    @albums = Album.includes([:artist]).page(params[:page]).
               per(PAGE_LIMIT)
   end
 
-  def show; end
+  def show
+    @songs = @album.songs.includes([:artists, :genre])
+  end
 
   private
 

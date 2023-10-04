@@ -71,7 +71,7 @@ module Admin
 
     # Only allow a list of trusted parameters through.
     def song_params
-      params.require(:song).permit(:name, :lyric, :genre_id, :link, :tempo,
+      params.require(:song).permit(:name, :lyric, :genre_id, :link, :tempo, :album_id,
                                    artists_songs_attributes: [:id, :artist_id, :artist_type, :_destroy])
     end
   end

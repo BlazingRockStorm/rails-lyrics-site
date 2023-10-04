@@ -10,7 +10,7 @@ class GenresController < ApplicationController
   end
 
   def show
-    @songs = @genre.songs.includes([:artists])
+    @songs = @genre.songs.includes([:artists, :album])
   end
 
   private
