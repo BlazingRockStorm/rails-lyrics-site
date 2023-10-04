@@ -13,7 +13,7 @@
 
       h2 Albums
       .row
-        - @artist.albums.each do |album|
+        - @albums.each do |album|
           .col-md-4
             .card.mb-2
               .card-body
@@ -23,7 +23,7 @@
                   = link_to 'View album', album_path(album)
 
       h2 Songs
-      - @artist.songs.each do |song|
+      - @songs.each do |song|
         .card.mb-2
           .card-title
             h3 = song.name

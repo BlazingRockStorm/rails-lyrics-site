@@ -9,7 +9,10 @@ class ArtistsController < ApplicationController
                per(PAGE_LIMIT)
   end
 
-  def show; end
+  def show
+    @albums = @artist.albums
+    @songs = @artist.songs.includes([:artists, :genre])
+  end
 
   private
 

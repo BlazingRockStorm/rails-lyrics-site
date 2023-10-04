@@ -8,7 +8,7 @@ h1
 .container-fluid
   .row.mt-2.lyrics-site-content
     main.col-md-9.col-lg-10
-      - @genre.songs.each do |song|
+      - @songs.each do |song|
         .card.mb-2
           .card-title
             h3 = song.name
