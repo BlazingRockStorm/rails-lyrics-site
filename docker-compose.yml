@@ -8,6 +8,19 @@ services:
     environment:
       POSTGRES_PASSWORD: password
 
+  solr:
+    image: solr:9.3.0
+    ports:
+      - "8983:8983"
+    volumes:
+      - search-data:/opt/solr/server/solr/mycores
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - development
+    links:
+      - db:db
+
   app:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails assets:precompile && bundle exec rails s -p 3000 -b '0.0.0.0'"
@@ -25,3 +38,4 @@ volumes:
   bundle:
   tmp-data:
   public-data:
+  search-data: {}
