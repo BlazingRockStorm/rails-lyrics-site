@@ -18,8 +18,8 @@ services:
       - docker-entrypoint.sh
       - solr-precreate
       - development
-    links:
-      - db:db
+    depends_on:
+      - db
 
   app:
     build: .
@@ -38,4 +38,4 @@ volumes:
   bundle:
   tmp-data:
   public-data:
-  search-data: {}
+  search-data:
