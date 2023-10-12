@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :albums, only: [:index, :show]
   resources :genres, only: [:index, :show]
   resources :artists, only: [:index, :show]
-  root 'songs#index'
+  root 'home#index'
 
   namespace :admin do
     resources :artists
@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     resources :songs
   end
 
-  get '/about', to: 'about_page#about', as: 'about'
+  get '/about', to: 'home#about', as: 'about'
+  get '/', to: 'home#index', as: 'home'
   match '*unmatched', to: 'application#not_found', via: :all
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

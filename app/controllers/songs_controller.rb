@@ -5,7 +5,7 @@ class SongsController < ApplicationController
   PAGE_LIMIT = 10
 
   def index
-    @songs = Song.includes(%i[genre album artists_songs artists]).
+    @songs = Song.includes(%i[genre artists_songs artists]).
              page(params[:page]).
              per(PAGE_LIMIT)
   end
