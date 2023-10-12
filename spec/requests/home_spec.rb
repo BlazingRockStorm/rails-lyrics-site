@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'AboutPages' do
+RSpec.describe 'HomePage' do
   describe 'GET /about' do
     it 'return the about page' do
       get about_path

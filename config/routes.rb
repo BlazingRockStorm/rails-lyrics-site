@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :songs
   end
 
-  get '/about', to: 'about_page#about', as: 'about'
+  get '/about', to: 'home#about', as: 'about'
   match '*unmatched', to: 'application#not_found', via: :all
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
