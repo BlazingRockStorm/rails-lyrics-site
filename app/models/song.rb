@@ -8,4 +8,9 @@ class Song < ApplicationRecord
   validates :name, presence: true
 
   accepts_nested_attributes_for :artists_songs, allow_destroy: true
+
+  def increase_visit
+    self.views_count += 1
+    save(validate: false)
+  end
 end
