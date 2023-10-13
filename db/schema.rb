@@ -29,7 +29,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_13_084054) do
     t.text "biography"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "pop_points", default: 0
+    t.integer "albums_points", default: 0
+    t.integer "songs_points", default: 0
     t.index ["name"], name: "index_artists_on_name", unique: true
   end
 
