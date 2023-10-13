@@ -8,8 +8,8 @@ module Admin
 
     # GET /artists or /artists.json
     def index
-      @artists = Artist.page(params[:page]).
-                 per(PAGE_LIMIT).order('id ASC')
+      @artists = Artist.sorted_by_id.page(params[:page]).
+                 per(PAGE_LIMIT)
     end
 
     # GET /artists/1 or /artists/1.json
