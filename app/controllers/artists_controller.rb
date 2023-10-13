@@ -11,7 +11,7 @@ class ArtistsController < ApplicationController
 
   def show
     @albums = @artist.albums
-    @songs = @artist.songs.includes([:artists, :genre, :album])
+    @songs = @artist.songs.includes([:artists, :genre])
   end
 
   private

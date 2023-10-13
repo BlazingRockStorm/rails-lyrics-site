@@ -3,14 +3,60 @@
 == render 'layouts/navbar_for_viewer'
 
 .container-fluid
-  .row.mt-2.lyrics-site-content
-    main.col-md-9.col-lg-10
-      h1 Incomming freatures
-      ul
-        li Most viewed lyrics
-        li Most viewed albums
-        li Lyrics ranking
-        li Albums ranking
-        li Most popular artists
-        li News
+  main.mt-2.lyrics-site-content
+    .row
+      .col-md-9
+        h1 Newest Song
+      .col-md-3
+        .card.mb-2
+          .card-header
+            h5 Most popular songs
+          .list-group.list-group-flush
+            - @most_viewed_songs.each do |song|
+              .list-group-item
+                p
+                  strong = link_to song.name, song_path(song)
+                p = artists_list song.artists
+                p 
+                  strong Views: 
+                  = song.views_count
+                
+    .row
+      .col-md-9
+        h1 Newest Album
+      .col-md-3
+        .card.mb-2
+          .card-header
+            h5 Most popular albums
+          .list-group.list-group-flush
+            - @most_viewed_albums.each do |album|
+              .list-group-item
+                p
+                  strong = link_to album.name, album_path(album)
+                p = album.artist.name
+                p 
+                  strong Views: 
+                  = album.views_count
+
+    .row
+      .col-md-9
+        h1 Featured Artist
+      .col-md-3
+        .card.mb-2
+          .card-header
+            h5 Most popular artists
+    .row
+      div
+        h1 Rankings
+    .row
+      .col-md-9
+        h1 Incomming features
+        ul
+          li Newest Song
+          li Newest Album
+          li Lyrics ranking
+          li Albums ranking
+          li Most popular artists
+          li News
+      
 == render 'layouts/footer'

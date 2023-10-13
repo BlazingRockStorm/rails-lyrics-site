@@ -8,8 +8,8 @@ module Admin
 
     # GET /albums or /albums.json
     def index
-      @albums = Album.page(params[:page]).
-                per(PAGE_LIMIT).order('id ASC')
+      @albums = Album.sorted_by_id.page(params[:page]).
+                per(PAGE_LIMIT)
     end
 
     # GET /albums/1 or /albums/1.json

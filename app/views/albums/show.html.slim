@@ -8,7 +8,11 @@
       h1
         = @album.name
       p
+        strong Release Year: 
         = @album.release_year
+      p
+        strong Views number: 
+        = @album.views_count
 
       p
         = link_to @album.artist.name, artist_path(@album.artist)
