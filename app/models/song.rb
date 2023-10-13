@@ -9,6 +9,9 @@ class Song < ApplicationRecord
 
   accepts_nested_attributes_for :artists_songs, allow_destroy: true
 
+  scope :sorted_by_id, -> { order(id: :asc) }
+  scope :most_viewed, -> { order(views_count: :desc).limit(5) }
+
   searchable do
     text :name, :lyrics
     integer :tempo
@@ -20,5 +23,10 @@ class Song < ApplicationRecord
     # text :album do
     #   album.name
     # end
+  end
+
+  def increase_visit
+    self.views_count += 1
+    save(validate: false)
   end
 end

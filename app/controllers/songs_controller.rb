@@ -10,7 +10,9 @@ class SongsController < ApplicationController
              per(PAGE_LIMIT)
   end
 
-  def show; end
+  def show
+    @song.increase_visit
+  end
 
   private
 

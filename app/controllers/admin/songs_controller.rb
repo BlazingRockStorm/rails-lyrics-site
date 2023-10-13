@@ -8,9 +8,9 @@ module Admin
 
     # GET /songs or /songs.json
     def index
-      @songs = Song.includes(%i[genre artists_songs artists]).
+      @songs = Song.sorted_by_id.includes(%i[genre artists_songs artists]).
                page(params[:page]).
-               per(PAGE_LIMIT).order('id ASC')
+               per(PAGE_LIMIT)
     end
 
     # GET /songs/1 or /songs/1.json

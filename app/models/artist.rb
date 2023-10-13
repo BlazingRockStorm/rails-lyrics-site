@@ -6,6 +6,8 @@ class Artist < ApplicationRecord
   has_many :songs, through: :artists_songs
   validates :name, presence: true, uniqueness: true
 
+  scope :sorted_by_id, -> { order(id: :asc) }
+
   searchable do
     text :name
     text :biography

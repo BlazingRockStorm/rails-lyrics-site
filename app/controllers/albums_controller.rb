@@ -11,6 +11,7 @@ class AlbumsController < ApplicationController
 
   def show
     @songs = @album.songs.includes([:artists, :genre])
+    @album.increase_visit
   end
 
   private

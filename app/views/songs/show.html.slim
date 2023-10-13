@@ -14,12 +14,15 @@
             = link_to @song.genre.name, genre_path(@song.genre)
           p
             strong Album:
-            = link_to @song.album.name, album_path(@song.album)
+            = link_to @song.album.name, album_path(@song.album) if @song.album
           p
             strong Artists:
             = artists_list @song.artists
           p
             iframe[style="border-radius:12px" src="#{@song.link}" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"]
+          p
+            strong Views number: 
+            = @song.views_count
           p
             strong Tempo:
             = @song.tempo.to_s + ' BPM'

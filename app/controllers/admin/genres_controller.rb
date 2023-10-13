@@ -8,8 +8,8 @@ module Admin
 
     # GET /genres or /genres.json
     def index
-      @genres = Genre.page(params[:page]).
-                per(PAGE_LIMIT).order('id ASC')
+      @genres = Genre.sorted_by_id.page(params[:page]).
+                per(PAGE_LIMIT)
     end
 
     # GET /genres/1 or /genres/1.json
