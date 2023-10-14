@@ -60,6 +60,10 @@ Metrics/BlockLength:
     - 'spec/**/*'
     - 'config/routes.rb'
 
+Metrics/MethodLength:
+  Exclude:
+    - 'app/jobs/*'
+
 Bundler/OrderedGems:
   Enabled: false
 
