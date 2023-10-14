@@ -13,6 +13,7 @@ module RailsLyricsSite
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
     config.assets.precompile << 'audios/*'
+    config.active_job.queue_adapter = :sidekiq
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -23,8 +24,8 @@ module RailsLyricsSite
     # config.eager_load_paths << Rails.root.join("extras")
     config.generators do |g|
       g.test_framework :rspec, fixture: true
-      g.fixture_replacement :factory_bot, dir: 'spec/factories' 
-    
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
+
       g.view_specs false
       g.helper_specs false
     end

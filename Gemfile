@@ -60,6 +60,9 @@ gem 'devise'
 # Use Kaminari
 gem 'kaminari'
 gem 'bootstrap5-kaminari-views'
+# Use Sidekiq
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
 # Use Sunspot
 gem 'sunspot_rails'
 
