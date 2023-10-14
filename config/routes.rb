@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get '/about', to: 'home#about', as: 'about'
   get '/', to: 'home#index', as: 'home'
 
+  mount Sidekiq::Web, at: '/sidekiq'
   match '*unmatched', to: 'application#not_found', via: :all
-  mount Sidekiq::Web => '/sidekiq'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
