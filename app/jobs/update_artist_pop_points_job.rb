@@ -5,7 +5,7 @@ class UpdateArtistPopPointsJob < ApplicationJob
 
   def perform(*_args)
     # Do something later
-    Artist.all.each do |artist|
+    Artist.find_each do |artist|
       artist.songs_points = 0
       artist.albums_points = 0
 
