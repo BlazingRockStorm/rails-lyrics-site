@@ -45,6 +45,12 @@
         .card.mb-2
           .card-header
             h5 Most popular artists
+          .list-group.list-group-flush
+            - @most_popular_artists.each do |artist|
+              .list-group-item
+                p
+                  strong = link_to artist.name, artist_path(artist)
+
     .row
       div
         h1 Rankings
@@ -56,7 +62,6 @@
           li Newest Album
           li Lyrics ranking
           li Albums ranking
-          li Most popular artists
           li News
       
 == render 'layouts/footer'
