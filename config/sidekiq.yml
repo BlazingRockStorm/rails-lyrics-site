@@ -1,0 +1,5 @@
+:scheduler:
+  :schedule:
+    update_artist_pop_points:
+      cron: '0 30 6 * * 1'
+      class: UpdateArtistPopPointsJob
