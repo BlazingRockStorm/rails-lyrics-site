@@ -13,7 +13,7 @@ class Song < ApplicationRecord
   scope :most_viewed, -> { order(views_count: :desc).limit(5) }
 
   searchable do
-    text :name, :lyrics
+    text :name, :lyric
     integer :tempo
 
     # text :genre do
