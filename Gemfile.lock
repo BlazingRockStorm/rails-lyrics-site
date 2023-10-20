@@ -1,3 +1,16 @@
+GIT
+  remote: https://github.com/bichinger/sunspot.git
+  revision: 1694743d80c9049a7084d35faef8e42e7e48aca2
+  branch: solr8-based-update
+  specs:
+    sunspot (2.6.0)
+      pr_geohash (~> 1.0)
+      rsolr (>= 1.1.1, < 3)
+    sunspot_rails (2.6.0)
+      rails (>= 3)
+      sunspot (= 2.6.0)
+    sunspot_solr (2.6.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -335,13 +348,6 @@ GEM
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
     stringio (3.0.8)
-    sunspot (2.6.0)
-      pr_geohash (~> 1.0)
-      rsolr (>= 1.1.1, < 3)
-    sunspot_rails (2.6.0)
-      rails (>= 3)
-      sunspot (= 2.6.0)
-    sunspot_solr (2.6.0)
     temple (0.10.3)
     thor (1.2.2)
     tilt (2.3.0)
@@ -406,8 +412,8 @@ DEPENDENCIES
   slim-rails
   sprockets-rails
   stimulus-rails
-  sunspot_rails
-  sunspot_solr
+  sunspot_rails!
+  sunspot_solr!
   turbo-rails
   tzinfo-data
   web-console

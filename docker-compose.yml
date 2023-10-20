@@ -16,9 +16,7 @@ services:
       - "6379:6379"
 
   solr:
-    build:
-      context: .
-      dockerfile: Dockerfile-solr
+    image: solr:8.6
     ports:
       - "8983:8983"
     volumes:
