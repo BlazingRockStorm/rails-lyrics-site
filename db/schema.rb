@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_13_084054) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_31_062003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -74,6 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_13_084054) do
   end
 
   add_foreign_key "albums", "artists"
+  add_foreign_key "artists_songs", "artists"
+  add_foreign_key "artists_songs", "songs"
   add_foreign_key "songs", "albums"
   add_foreign_key "songs", "genres"
 end
