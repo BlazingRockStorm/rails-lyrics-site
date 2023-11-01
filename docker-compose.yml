@@ -15,9 +15,22 @@ services:
     ports:
       - "6379:6379"
 
+  solr:
+    build: solr_docker
+    ports:
+      - "8983:8983"
+    volumes:
+      - search-data:/opt/solr/server/solr/mycores
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - development
+    depends_on:
+      - db
+
   app:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails assets:precompile && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/rails-lyrics-site
       - bundle:/usr/local/bundle
@@ -27,6 +40,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - solr
       - redis
 
   sidekiq:
@@ -42,3 +56,4 @@ volumes:
   bundle:
   tmp-data:
   public-data:
+  search-data:

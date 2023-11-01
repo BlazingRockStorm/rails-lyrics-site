@@ -12,6 +12,19 @@ class Song < ApplicationRecord
   scope :sorted_by_id, -> { order(id: :asc) }
   scope :most_viewed, -> { order(views_count: :desc).limit(5) }
 
+  searchable do
+    text :name, :lyric
+    integer :tempo
+
+    # text :genre do
+    #   genre.name
+    # end
+
+    # text :album do
+    #   album.name
+    # end
+  end
+
   def increase_visit
     self.views_count += 1
     save(validate: false)
