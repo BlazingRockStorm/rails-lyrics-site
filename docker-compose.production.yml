@@ -15,7 +15,7 @@ services:
       - "3000:3000"
 
   solr:
-    image: solr:9.3.0
+    build: solr_docker
     ports:
       - "8983:8983"
     volumes:
