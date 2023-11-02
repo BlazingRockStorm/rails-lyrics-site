@@ -7,5 +7,12 @@ class HomeController < ApplicationController
     @most_popular_artists = Artist.most_popular
   end
 
+  def search_results
+    @searched_songs = Song.search do
+      fulltext params[:search]
+    end
+    @songs = @searched_songs.results
+  end
+
   def about; end
 end

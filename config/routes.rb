@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   resources :albums, only: [:index, :show]
   resources :genres, only: [:index, :show]
   resources :artists, only: [:index, :show]
-  root 'home#index'
 
   namespace :admin do
     resources :artists
@@ -17,6 +16,7 @@ Rails.application.routes.draw do
     resources :songs
   end
 
+  get '/search_results', to: 'home#search_results', as: 'search_results'
   get '/about', to: 'home#about', as: 'about'
   get '/', to: 'home#index', as: 'home'
 
@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     mount Sidekiq::Web, at: '/sidekiq'
   end
 
+  root 'home#index'
   match '*unmatched', to: 'application#not_found', via: :all
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

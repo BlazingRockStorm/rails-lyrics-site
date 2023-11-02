@@ -1,0 +1,16 @@
+- content_for :title, 'Japanese lyrics site'
+
+== render 'layouts/navbar_for_viewer'
+
+.container-fluid
+  .row.mt-2.lyrics-site-content
+    main.col-md-9.col-lg-10
+      Search results
+      - @songs.each do |song|
+        p
+          strong = link_to song.name, song_path(song)
+        p = artists_list song.artists
+        p 
+          strong Views: 
+          = song.views_count
+== render 'layouts/footer'
