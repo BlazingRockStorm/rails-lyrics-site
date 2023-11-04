@@ -8,10 +8,10 @@ class HomeController < ApplicationController
   end
 
   def search_results
-    @searched_songs = Song.search do
+    @searched = params[:target].camelize.constantize.search do
       fulltext params[:search]
     end
-    @songs = @searched_songs.results
+    @results = @searched.results
   end
 
   def about; end
