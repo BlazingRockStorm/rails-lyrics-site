@@ -5,35 +5,53 @@
 .container-fluid
   .row.mt-2.lyrics-site-content
     main.col-md-9.col-lg-10
-      p 
+      h2 
         | Searched results for 
         strong = params[:search]
       - if params[:target] == 'Song'
         - @results.each do |song|
-          p
-            strong = link_to song.name, song_path(song)
-          p = artists_list song.artists
-          p 
-            strong Views: 
-            = song.views_count
+          .card.mb-2
+            .card-title
+              h3 = song.name
+            .card-body
+              p
+                = artists_list song.artists
+              p
+                = song.genre.name 
+              p
+                = song.album.name if song.album
+              p
+                = song.tempo.to_s + ' BPM'
+              p
+                = link_to 'View lyrics', song_path(song)
 
       - if params[:target] == 'Artist'
         - @results.each do |artist|
-          p
-            strong = link_to artist.name, artist_path(artist)
-          p 
-            strong Biography: 
-            = artist.biography
+          .card.mb-2
+            .card-body
+              p
+                strong = link_to artist.name, artist_path(artist)
+              p
+                strong Biography: 
+                = artist.biography
 
       - if params[:target] == 'Genre'
         - @results.each do |genre|
-          p
-            strong = link_to genre.name, genre_path(genre)
+          .card.mb-2
+            .card-body
+              p
+                = link_to genre.name, genre_path(genre)
 
       - if params[:target] == 'Album'
         - @results.each do |album|
-          p
-            strong = link_to album.name, album_path(album)
+          .card.mb-2
+            .card-body
+              p
+                = link_to album.name, album_path(album)
+              p
+                = album.artist.name
+              p
+                = album.release_year
 
       = paginate @results, theme: 'bootstrap-5'
 

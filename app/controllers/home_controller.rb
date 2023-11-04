@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
+  around_action :skip_bullet, only: :search_results, if: -> { defined?(Bullet) }
   PAGE_LIMIT = 10
 
   def index
