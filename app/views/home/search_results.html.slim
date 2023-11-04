@@ -5,7 +5,9 @@
 .container-fluid
   .row.mt-2.lyrics-site-content
     main.col-md-9.col-lg-10
-      Search results
+      p 
+        | Searched results for 
+        strong = params[:search]
       - if params[:target] == 'Song'
         - @results.each do |song|
           p
@@ -32,5 +34,7 @@
         - @results.each do |album|
           p
             strong = link_to album.name, album_path(album)
+
+      = paginate @results, theme: 'bootstrap-5'
 
 == render 'layouts/footer'

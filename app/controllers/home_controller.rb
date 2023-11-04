@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
+  PAGE_LIMIT = 10
+
   def index
     @most_viewed_songs = Song.most_viewed.includes([:artists])
     @most_viewed_albums = Album.most_viewed.includes([:artist])
@@ -10,6 +12,7 @@ class HomeController < ApplicationController
   def search_results
     @searched = params[:target].camelize.constantize.search do
       fulltext params[:search]
+      paginate page: params[:page], per_page: PAGE_LIMIT
     end
     @results = @searched.results
   end
