@@ -15,7 +15,7 @@ nav.navbar.navbar-expand-lg[style='background-color: #e3f2fd;' data-bs-theme='li
           = link_to 'Genres', genres_path, class: 'nav-link'
         li.nav-item
           = link_to 'About', about_path, class: 'nav-link'
-      form.d-flex[role='search']
-        input.form-control.me-2[type='search' placeholder='Search' aria-label='Search']
-        button.btn.btn-outline-primary[type='submit']
-          | Search
+      = form_tag search_results_path, :method => :get, class: 'input-group w-50' do
+        = text_field_tag :search, params[:search], placeholder: 'Type keyword...', class: 'form-control w-50'
+        = select_tag :target, options_for_select(['Song', 'Artist', 'Album', 'Genre'], params[:target]), class: 'form-control'
+        = submit_tag "Search", :name => nil, class: 'btn btn-outline-primary'
