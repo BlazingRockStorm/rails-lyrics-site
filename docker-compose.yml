@@ -22,9 +22,9 @@ services:
     volumes:
       - search-data:/opt/solr/server/solr/mycores
     entrypoint:
-      - docker-entrypoint.sh
-      - solr-precreate
-      - development
+      - bash
+      - "-c"
+      - "precreate-core development; precreate-core test; exec solr -f"
     depends_on:
       - db
 
