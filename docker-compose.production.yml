@@ -24,8 +24,6 @@ services:
       - docker-entrypoint.sh
       - solr-precreate
       - production
-    # links:
-    #   - db:db
 
   nginx:
     build: nginx
@@ -34,8 +32,6 @@ services:
       - public-data:/rails-lyrics-site/public
     ports:
       - "80:80"
-    depends_on:
-      - web
 
 volumes:
   bundle:
