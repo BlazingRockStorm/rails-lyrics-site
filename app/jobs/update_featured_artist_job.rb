@@ -3,7 +3,7 @@
 class UpdateFeaturedArtistJob < ApplicationJob
   queue_as :low
 
-  def perform(args)
+  def perform(arg)
     # Do something later
     Artist.find_each do |artist|
       artist.featured_artist_flag = false
@@ -11,7 +11,7 @@ class UpdateFeaturedArtistJob < ApplicationJob
       artist.save!
     end
 
-    new_featured_artist = Artist.find_by(name: args)
+    new_featured_artist = Artist.find_by(name: arg)
     new_featured_artist.featured_artist_flag = true
     new_featured_artist.save!
   end
