@@ -5,8 +5,22 @@
 .container-fluid
   main.mt-2.lyrics-site-content
     .row
+      h1 New Song
       .col-md-9
-        h1 New Song
+        .card.mb-2
+          .card-title
+            h3 = @newest_song.name
+          .card-body
+            p
+              = artists_list @newest_song.artists
+            p
+              = @newest_song.genre.name
+            p
+              = @newest_song.album.name
+            p
+              = @newest_song.tempo.to_s + ' BPM'
+            p
+              = link_to 'View lyrics', song_path(@newest_song)
       .col-md-3
         .card.mb-2
           .card-header
@@ -22,8 +36,8 @@
                   = song.views_count
                 
     .row
+      h1 New Album
       .col-md-9
-        h1 New Album
         .card.mb-2
           .card-body
             p
@@ -47,8 +61,8 @@
                   = album.views_count
 
     .row
+      h1 Featured Artist
       .col-md-9
-        h1 Featured Artist
       .col-md-3
         .card.mb-2
           .card-header
