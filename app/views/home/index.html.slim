@@ -63,6 +63,12 @@
     .row
       h1 Featured Artist
       .col-md-9
+        .card.mb-2
+          .card-body
+            h1
+              = link_to @featured_artist.name, artist_path(@featured_artist)
+            p
+              = @featured_artist.biography
       .col-md-3
         .card.mb-2
           .card-header
