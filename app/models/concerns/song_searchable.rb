@@ -12,9 +12,9 @@ module SongSearchable
         genre.name
       end
 
-      # text :album do
-      #   album.name
-      # end
+      text :album do
+        album.name
+      end
     end
   end
 end
