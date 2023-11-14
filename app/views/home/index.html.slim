@@ -5,8 +5,22 @@
 .container-fluid
   main.mt-2.lyrics-site-content
     .row
+      h1 New Song
       .col-md-9
-        h1 Newest Song
+        .card.mb-2
+          .card-title
+            h3 = @newest_song.name
+          .card-body
+            p
+              = artists_list @newest_song.artists
+            p
+              = @newest_song.genre.name
+            p
+              = @newest_song.album.name
+            p
+              = @newest_song.tempo.to_s + ' BPM'
+            p
+              = link_to 'View lyrics', song_path(@newest_song)
       .col-md-3
         .card.mb-2
           .card-header
@@ -22,8 +36,16 @@
                   = song.views_count
                 
     .row
+      h1 New Album
       .col-md-9
-        h1 Newest Album
+        .card.mb-2
+          .card-body
+            p
+              = link_to @newest_album.name, album_path(@newest_album)
+            p
+              = @newest_album.artist.name
+            p
+              = @newest_album.release_year
       .col-md-3
         .card.mb-2
           .card-header
@@ -39,8 +61,14 @@
                   = album.views_count
 
     .row
+      h1 Featured Artist
       .col-md-9
-        h1 Featured Artist
+        .card.mb-2
+          .card-body
+            h1
+              = link_to @featured_artist.name, artist_path(@featured_artist)
+            p
+              = @featured_artist.biography
       .col-md-3
         .card.mb-2
           .card-header
@@ -58,10 +86,9 @@
       .col-md-9
         h1 Incomming features
         ul
-          li Newest Song
-          li Newest Album
           li Lyrics ranking
           li Albums ranking
           li News
+          li Tours
       
 == render 'layouts/footer'

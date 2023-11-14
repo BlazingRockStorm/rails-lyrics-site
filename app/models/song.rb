@@ -13,6 +13,7 @@ class Song < ApplicationRecord
 
   scope :sorted_by_id, -> { order(id: :asc) }
   scope :most_viewed, -> { order(views_count: :desc).limit(5) }
+  scope :newest_song, -> { order(created_at: :desc).first }
 
   def increase_visit
     self.views_count += 1
