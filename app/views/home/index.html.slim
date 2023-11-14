@@ -6,7 +6,7 @@
   main.mt-2.lyrics-site-content
     .row
       .col-md-9
-        h1 Newest Song
+        h1 New Song
       .col-md-3
         .card.mb-2
           .card-header
@@ -23,7 +23,15 @@
                 
     .row
       .col-md-9
-        h1 Newest Album
+        h1 New Album
+        .card.mb-2
+          .card-body
+            p
+              = link_to @newest_album.name, album_path(@newest_album)
+            p
+              = @newest_album.artist.name
+            p
+              = @newest_album.release_year
       .col-md-3
         .card.mb-2
           .card-header
