@@ -3,7 +3,6 @@
 class HomeController < ApplicationController
   around_action :skip_bullet, only: :search_results, if: -> { defined?(Bullet) }
   PAGE_LIMIT = 10
-  FEATURED_ARTIST = 'ONE OK ROCK'
 
   def index
     @most_viewed_songs = Song.most_viewed.includes([:artists])
@@ -11,7 +10,7 @@ class HomeController < ApplicationController
     @most_popular_artists = Artist.most_popular
     @newest_song = Song.newest_song
     @newest_album = Album.newest_album
-    @featured_artist = Artist.find_by(name: FEATURED_ARTIST)
+    @featured_artist = Artist.find_by(featured_artist_flag: true)
   end
 
   def search_results
