@@ -33,6 +33,12 @@ services:
     ports:
       - "80:80"
 
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - .:/rails-lyrics-site
+
 volumes:
   bundle:
   log-data:
