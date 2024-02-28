@@ -15,6 +15,7 @@ if [ "$RAILS_ENV" = "production" ]; then
   # マイグレーション処理
   bundle exec rails db:migrate
   # Solr index
+  # bundle exec rake sunspot:solr:run
   bundle exec rake sunspot:reindex
 fi
 
