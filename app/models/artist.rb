@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Artist < ApplicationRecord
-  include ArtistSearchable
+  # include ArtistSearchable
 
   has_many :albums, dependent: :destroy
   has_many :artists_songs, dependent: :destroy

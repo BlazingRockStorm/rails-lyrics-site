@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  around_action :skip_bullet, only: :search_results, if: -> { defined?(Bullet) }
+  # around_action :skip_bullet, only: :search_results, if: -> { defined?(Bullet) }
   PAGE_LIMIT = 10
 
   def index
@@ -13,13 +13,13 @@ class HomeController < ApplicationController
     @featured_artist = Artist.find_by(featured_artist_flag: true)
   end
 
-  def search_results
-    @searched = params[:target].camelize.constantize.search do
-      fulltext params[:search]
-      paginate page: params[:page], per_page: PAGE_LIMIT
-    end
-    @results = @searched.results
-  end
+  # def search_results
+  #   @searched = params[:target].camelize.constantize.search do
+  #     fulltext params[:search]
+  #     paginate page: params[:page], per_page: PAGE_LIMIT
+  #   end
+  #   @results = @searched.results
+  # end
 
   def about; end
 end

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :songs
   end
 
-  get '/search_results', to: 'home#search_results', as: 'search_results'
+  # get '/search_results', to: 'home#search_results', as: 'search_results'
   get '/about', to: 'home#about', as: 'about'
   get '/', to: 'home#index', as: 'home'
 

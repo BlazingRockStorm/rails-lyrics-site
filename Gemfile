@@ -63,14 +63,10 @@ gem 'bootstrap5-kaminari-views'
 # Use Sidekiq
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
-# Use Sunspot
-gem 'sunspot_rails', git: 'https://github.com/bichinger/sunspot.git', branch: 'solr8-based-update'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  # Use Sunspot in development
-  gem 'sunspot_solr', git: 'https://github.com/bichinger/sunspot.git', branch: 'solr8-based-update'
 end
 
 group :development do

@@ -1,16 +1,3 @@
-GIT
-  remote: https://github.com/bichinger/sunspot.git
-  revision: 1694743d80c9049a7084d35faef8e42e7e48aca2
-  branch: solr8-based-update
-  specs:
-    sunspot (2.6.0)
-      pr_geohash (~> 1.0)
-      rsolr (>= 1.1.1, < 3)
-    sunspot_rails (2.6.0)
-      rails (>= 3)
-      sunspot (= 2.6.0)
-    sunspot_solr (2.6.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -128,11 +115,6 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faraday (2.7.11)
-      base64
-      faraday-net_http (>= 2.0, < 3.1)
-      ruby2_keywords (>= 0.0.4)
-    faraday-net_http (3.0.2)
     fugit (1.8.1)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
@@ -202,7 +184,6 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.4)
-    pr_geohash (1.0.0)
     progress_bar (1.3.3)
       highline (>= 1.6, < 3)
       options (~> 2.3.0)
@@ -261,9 +242,6 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
-    rsolr (2.5.0)
-      builder (>= 2.1.2)
-      faraday (>= 0.9, < 3, != 2.0.0)
     rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
     rspec-expectations (3.12.3)
@@ -308,7 +286,6 @@ GEM
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
     ruby-progressbar (1.13.0)
-    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     rufus-scheduler (3.9.1)
       fugit (~> 1.1, >= 1.1.6)
@@ -412,8 +389,6 @@ DEPENDENCIES
   slim-rails
   sprockets-rails
   stimulus-rails
-  sunspot_rails!
-  sunspot_solr!
   turbo-rails
   tzinfo-data
   web-console

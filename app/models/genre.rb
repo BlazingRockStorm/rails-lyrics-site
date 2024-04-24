@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Genre < ApplicationRecord
-  include GenreSearchable
+  # include GenreSearchable
 
   has_many :songs, dependent: :destroy
   validates :name, presence: true, uniqueness: true
