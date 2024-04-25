@@ -14,17 +14,6 @@ services:
     ports:
       - "3000:3000"
 
-  solr:
-    build: solr_docker
-    ports:
-      - "8983:8983"
-    volumes:
-      - search-data:/opt/solr/server/solr/mycores
-    entrypoint:
-      - docker-entrypoint.sh
-      - solr-precreate
-      - production
-
   nginx:
     build: nginx
     volumes:
