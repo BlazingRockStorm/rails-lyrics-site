@@ -42,7 +42,7 @@ services:
       - elasticsearch
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
     ports:
       - 9200:9200
     environment:
@@ -53,14 +53,40 @@ services:
       - xpack.monitoring.enabled=false
       - xpack.graph.enabled=false
       - xpack.watcher.enabled=false
+      - ELASTIC_PASSWORD=sVUurmsWYEwnliUxp3pX
     ulimits:
       memlock:
         soft: -1
         hard: -1
     volumes:
-      - ./docker_data/elasticsearch/data:/usr/share/elasticsearch/data
+      - search-data:/usr/share/elasticsearch/data
+
+  logstash:
+    image: logstash:7.10.1
+    ports:
+      - "5044:5044"
+      - "9600:9600"
+    volumes:
+      - ls-data:/usr/share/logstash/data
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: kibana:7.10.1
+    ports:
+      - "5601:5601"
+    volumes:
+      - kb-data:/usr/share/kibana/data
+    environment:
+      - ELASTICSEARCH_USERNAME="kibana_system"
+      - ELASTICSEARCH_PASSWORD="sVUurmsWYEwnliUxp3pX"
+    depends_on:
+      - elasticsearch
 
 volumes:
   bundle:
   tmp-data:
   public-data:
+  search-data:
+  ls-data:
+  kb-data:

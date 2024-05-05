@@ -38,4 +38,3 @@
 .DS_Store
 .env
 /coverage
-/docker_data
