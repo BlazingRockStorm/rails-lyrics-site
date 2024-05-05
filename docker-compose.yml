@@ -29,6 +29,7 @@ services:
     depends_on:
       - db
       - redis
+      - elasticsearch
 
   sidekiq:
     build: .
@@ -38,11 +39,14 @@ services:
     depends_on:
       - db
       - redis
+      - elasticsearch
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+    ports:
+      - 9200:9200
     environment:
-      - cluster.name=docker-cluster
+      - discovery.type=single-node
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - xpack.security.enabled=false
@@ -55,8 +59,6 @@ services:
         hard: -1
     volumes:
       - ./docker_data/elasticsearch/data:/usr/share/elasticsearch/data
-    ports:
-      - 9200:9200
 
 volumes:
   bundle:
