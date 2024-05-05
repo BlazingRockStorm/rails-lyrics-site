@@ -27,7 +27,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_URL=${ELASTICSEARCH_URL}
     depends_on:
       - db
       - redis
