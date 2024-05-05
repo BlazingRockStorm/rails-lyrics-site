@@ -26,6 +26,8 @@ services:
       - public-data:/rails-lyrics-site/public
     ports:
       - "3000:3000"
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
     depends_on:
       - db
       - redis

@@ -2,6 +2,7 @@
 
 class Artist < ApplicationRecord
   # include ArtistSearchable
+  searchkick
 
   has_many :albums, dependent: :destroy
   has_many :artists_songs, dependent: :destroy
