@@ -13,13 +13,10 @@ class HomeController < ApplicationController
     @featured_artist = Artist.find_by(featured_artist_flag: true)
   end
 
-  # def search_results
-  #   @searched = params[:target].camelize.constantize.search do
-  #     fulltext params[:search]
-  #     paginate page: params[:page], per_page: PAGE_LIMIT
-  #   end
-  #   @results = @searched.results
-  # end
+  def search_results
+    @results = params[:target].camelize.constantize.
+               search(params[:search], page: params[:page], per_page: PAGE_LIMIT)
+  end
 
   def about; end
 end
