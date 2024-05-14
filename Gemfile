@@ -65,11 +65,11 @@ gem 'sidekiq'
 gem 'sidekiq-scheduler'
 # Use searchkick
 gem 'searchkick'
+gem 'elasticsearch', '~> 7.10.1'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  gem 'elasticsearch', '~> 7.10.1'
 end
 
 group :development do
