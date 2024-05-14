@@ -14,8 +14,6 @@ if [ "$RAILS_ENV" = "production" ]; then
   # --------------------------------------
   # マイグレーション処理
   bundle exec rails db:migrate
-  # Solr index
-  bundle exec rake sunspot:reindex
 fi
 
 # Then exec the container's main process (what's set as CMD in the Dockerfile).

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Song < ApplicationRecord
-  include SongSearchable
+  searchkick
 
   belongs_to :genre
   belongs_to :album

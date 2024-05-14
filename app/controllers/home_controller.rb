@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  around_action :skip_bullet, only: :search_results, if: -> { defined?(Bullet) }
+  # around_action :skip_bullet, only: :search_results, if: -> { defined?(Bullet) }
   PAGE_LIMIT = 10
 
   def index
@@ -14,11 +14,8 @@ class HomeController < ApplicationController
   end
 
   def search_results
-    @searched = params[:target].camelize.constantize.search do
-      fulltext params[:search]
-      paginate page: params[:page], per_page: PAGE_LIMIT
-    end
-    @results = @searched.results
+    @results = params[:target].camelize.constantize.
+               search(params[:search], page: params[:page], per_page: PAGE_LIMIT)
   end
 
   def about; end

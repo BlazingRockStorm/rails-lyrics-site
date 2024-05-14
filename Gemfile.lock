@@ -1,16 +1,3 @@
-GIT
-  remote: https://github.com/bichinger/sunspot.git
-  revision: 707accfff9834efefe9a2d1b4a0ea8561fd9d347
-  branch: solr8-based-update
-  specs:
-    sunspot (2.6.0)
-      pr_geohash (~> 1.0)
-      rsolr (>= 1.1.1, < 3)
-    sunspot_rails (2.6.0)
-      rails (>= 5)
-      sunspot (= 2.6.0)
-    sunspot_solr (2.6.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -119,6 +106,14 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
     docile (1.4.0)
+    elasticsearch (7.10.1)
+      elasticsearch-api (= 7.10.1)
+      elasticsearch-transport (= 7.10.1)
+    elasticsearch-api (7.10.1)
+      multi_json
+    elasticsearch-transport (7.10.1)
+      faraday (~> 1)
+      multi_json
     erubi (1.12.0)
     et-orbi (1.2.11)
       tzinfo
@@ -127,24 +122,44 @@ GEM
     factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
-    faraday (2.9.0)
-      faraday-net_http (>= 2.0, < 3.2)
-    faraday-net_http (3.1.0)
-      net-http
+    faraday (1.10.3)
+      faraday-em_http (~> 1.0)
+      faraday-em_synchrony (~> 1.0)
+      faraday-excon (~> 1.1)
+      faraday-httpclient (~> 1.0)
+      faraday-multipart (~> 1.0)
+      faraday-net_http (~> 1.0)
+      faraday-net_http_persistent (~> 1.0)
+      faraday-patron (~> 1.0)
+      faraday-rack (~> 1.0)
+      faraday-retry (~> 1.0)
+      ruby2_keywords (>= 0.0.4)
+    faraday-em_http (1.0.0)
+    faraday-em_synchrony (1.0.0)
+    faraday-excon (1.1.0)
+    faraday-httpclient (1.0.1)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+    faraday-net_http (1.0.1)
+    faraday-net_http_persistent (1.2.0)
+    faraday-patron (1.0.0)
+    faraday-rack (1.0.0)
+    faraday-retry (1.0.3)
     fugit (1.11.0)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hashie (5.0.0)
     highline (2.1.0)
     hpricot (0.8.6)
     html2slim (0.2.0)
       hpricot
-    i18n (1.14.4)
+    i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
-    irb (1.12.0)
-      rdoc
+    irb (1.13.1)
+      rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jbuilder (2.12.0)
       actionview (>= 5.0.0)
@@ -179,9 +194,9 @@ GEM
     mini_mime (1.1.5)
     minitest (5.22.3)
     msgpack (1.7.2)
-    net-http (0.4.1)
-      uri
-    net-imap (0.4.10)
+    multi_json (1.15.0)
+    multipart-post (2.4.1)
+    net-imap (0.4.11)
       date
       net-protocol
     net-pop (0.1.2)
@@ -190,8 +205,8 @@ GEM
       timeout
     net-smtp (0.5.0)
       net-protocol
-    nio4r (2.7.1)
-    nokogiri (1.16.4-x86_64-linux)
+    nio4r (2.7.3)
+    nokogiri (1.16.5-x86_64-linux)
       racc (~> 1.4)
     options (2.3.2)
     orm_adapter (0.5.0)
@@ -200,7 +215,6 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.6)
-    pr_geohash (1.0.0)
     progress_bar (1.3.3)
       highline (>= 1.6, < 3)
       options (~> 2.3.0)
@@ -252,22 +266,19 @@ GEM
       psych (>= 4.0.0)
     redis-client (0.22.1)
       connection_pool
-    regexp_parser (2.9.0)
-    reline (0.5.4)
+    regexp_parser (2.9.1)
+    reline (0.5.6)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
-    rsolr (2.6.0)
-      builder (>= 2.1.2)
-      faraday (>= 0.9, < 3, != 2.0.0)
     rspec-core (3.13.0)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-mocks (3.13.0)
+    rspec-mocks (3.13.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-rails (6.1.2)
@@ -279,7 +290,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.1)
-    rubocop (1.63.4)
+    rubocop (1.63.5)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -301,7 +312,7 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-rspec (2.29.1)
+    rubocop-rspec (2.29.2)
       rubocop (~> 1.40)
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
@@ -309,9 +320,13 @@ GEM
     rubocop-rspec_rails (2.28.3)
       rubocop (~> 1.40)
     ruby-progressbar (1.13.0)
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     rufus-scheduler (3.9.1)
       fugit (~> 1.1, >= 1.1.6)
+    searchkick (5.3.1)
+      activemodel (>= 6.1)
+      hashie
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -360,7 +375,6 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
     uniform_notifier (1.16.0)
-    uri (0.13.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -391,6 +405,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise
+  elasticsearch (~> 7.10.1)
   factory_bot_rails
   html2slim
   jbuilder
@@ -405,6 +420,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   rubocop-rspec
+  searchkick
   selenium-webdriver
   sidekiq
   sidekiq-scheduler
@@ -412,8 +428,6 @@ DEPENDENCIES
   slim-rails
   sprockets-rails
   stimulus-rails
-  sunspot_rails!
-  sunspot_solr!
   turbo-rails
   tzinfo-data
   web-console

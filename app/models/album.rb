@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Album < ApplicationRecord
-  include AlbumSearchable
+  searchkick
 
   belongs_to :artist
   has_many :songs, dependent: :nullify
