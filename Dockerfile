@@ -14,7 +14,6 @@ COPY Gemfile.lock /var/www/rails-lyrics-site/Gemfile.lock
 RUN bundle install
 
 COPY . /var/www/rails-lyrics-site
-RUN mkdir -p tmp/sockets
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
@@ -23,5 +22,4 @@ ENTRYPOINT ["entrypoint.sh"]
 VOLUME /var/www/rails-lyrics-site/public
 VOLUME /var/www/rails-lyrics-site/tmp
 
-CMD bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma/production.rb"
 EXPOSE 3000
