@@ -15,15 +15,24 @@ services:
     ports:
       - "6379:6379"
 
+  # nginx:
+  #   build: nginx
+  #   volumes:
+  #     - tmp-data:/rails-lyrics-site/tmp
+  #     - public-data:/rails-lyrics-site/public
+  #   ports:
+  #     - "80:80"
+
   app:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid &&
       bundle exec rails s -p 3000 -b '0.0.0.0'"
+    # command: bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma/production.rb -e production"
     volumes:
-      - .:/rails-lyrics-site
+      - .:/var/www/rails-lyrics-site
       - bundle:/usr/local/bundle
-      - tmp-data:/rails-lyrics-site/tmp
-      - public-data:/rails-lyrics-site/public
+      - tmp-data:/var/www/rails-lyrics-site/tmp
+      - public-data:/var/www/rails-lyrics-site/public
     ports:
       - "3000:3000"
     environment:
@@ -37,7 +46,7 @@ services:
     build: .
     command: bundle exec sidekiq
     volumes:
-      - .:/rails-lyrics-site
+      - .:/var/www/rails-lyrics-site
     depends_on:
       - db
       - redis
@@ -55,7 +64,7 @@ services:
       - xpack.monitoring.enabled=false
       - xpack.graph.enabled=false
       - xpack.watcher.enabled=false
-      - ELASTIC_PASSWORD=sVUurmsWYEwnliUxp3pX
+      # - ELASTIC_PASSWORD=sVUurmsWYEwnliUxp3pX
     ulimits:
       memlock:
         soft: -1
@@ -63,32 +72,32 @@ services:
     volumes:
       - search-data:/usr/share/elasticsearch/data
 
-  logstash:
-    image: logstash:7.10.1
-    ports:
-      - "5044:5044"
-      - "9600:9600"
-    volumes:
-      - ls-data:/usr/share/logstash/data
-    depends_on:
-      - elasticsearch
+  # logstash:
+  #   image: logstash:7.10.1
+  #   ports:
+  #     - "5044:5044"
+  #     - "9600:9600"
+  #   volumes:
+  #     - ls-data:/usr/share/logstash/data
+  #   depends_on:
+  #     - elasticsearch
 
-  kibana:
-    image: kibana:7.10.1
-    ports:
-      - "5601:5601"
-    volumes:
-      - kb-data:/usr/share/kibana/data
-    environment:
-      - ELASTICSEARCH_USERNAME="kibana_system"
-      - ELASTICSEARCH_PASSWORD="sVUurmsWYEwnliUxp3pX"
-    depends_on:
-      - elasticsearch
+  # kibana:
+  #   image: kibana:7.10.1
+  #   ports:
+  #     - "5601:5601"
+  #   volumes:
+  #     - kb-data:/usr/share/kibana/data
+  #   environment:
+  #     - ELASTICSEARCH_USERNAME="kibana_system"
+  #     - ELASTICSEARCH_PASSWORD="sVUurmsWYEwnliUxp3pX"
+  #   depends_on:
+  #     - elasticsearch
 
 volumes:
   bundle:
   tmp-data:
   public-data:
   search-data:
-  ls-data:
-  kb-data:
+  # ls-data:
+  # kb-data:

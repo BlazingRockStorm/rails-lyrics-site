@@ -29,8 +29,7 @@
 **/secrets.dev.yaml
 **/values.dev.yaml
 /coverage
-/log
-/storage
-/tmp
 LICENSE
 README.md
+.DS_Store
+.env

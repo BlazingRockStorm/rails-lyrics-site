@@ -8,20 +8,20 @@ RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get update -qq && apt-get install -y nodejs build-essential postgresql-client yarn \
     curl dirmngr apt-transport-https lsb-release ca-certificates
 
-WORKDIR /rails-lyrics-site
-COPY Gemfile /rails-lyrics-site/Gemfile
-COPY Gemfile.lock /rails-lyrics-site/Gemfile.lock
+WORKDIR /var/www/rails-lyrics-site
+COPY Gemfile /var/www/rails-lyrics-site/Gemfile
+COPY Gemfile.lock /var/www/rails-lyrics-site/Gemfile.lock
 RUN bundle install
 
-COPY . /rails-lyrics-site
+COPY . /var/www/rails-lyrics-site
 RUN mkdir -p tmp/sockets
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 
-VOLUME /rails-lyrics-site/public
-VOLUME /rails-lyrics-site/tmp
+VOLUME /var/www/rails-lyrics-site/public
+VOLUME /var/www/rails-lyrics-site/tmp
 
 CMD bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma/production.rb"
 EXPOSE 3000
