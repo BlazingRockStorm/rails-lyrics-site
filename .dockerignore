@@ -4,9 +4,24 @@
 # For more help, visit the .dockerignore file reference guide at
 # https://docs.docker.com/go/build-context-dockerignore/
 
-**/.DS_Store
-**/.dockerignore
-**/.env
-**/coverage
+.DS_Store
+.env
+node_modules/
+
+.git
+.gitignore
+.github
+
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+coverage
 LICENSE
 README.md
