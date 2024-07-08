@@ -22,6 +22,6 @@ ENTRYPOINT ["entrypoint.sh"]
 VOLUME /var/www/rails-lyrics-site/public
 VOLUME /var/www/rails-lyrics-site/tmp
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["bundle","exec","puma","-C","config/puma/production.rb","-e","production"]
 
-EXPOSE 3000
+# EXPOSE 3000
