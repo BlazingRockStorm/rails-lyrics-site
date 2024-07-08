@@ -22,4 +22,6 @@ ENTRYPOINT ["entrypoint.sh"]
 VOLUME /var/www/rails-lyrics-site/public
 VOLUME /var/www/rails-lyrics-site/tmp
 
+CMD ["rails", "server", "-b", "0.0.0.0"]
+
 EXPOSE 3000
