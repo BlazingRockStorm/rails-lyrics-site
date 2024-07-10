@@ -16,7 +16,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
       - name: Setup pronto
-        run: gem install pronto pronto-rubocop rubocop-rspec rubocop-rails
+        run: gem install pronto pronto-rubocop rubocop-rspec rubocop-rails rubocop-factory_bot
       - name: Run Pronto
         run: pronto run -f github_status github_pr -c origin/${{ github.base_ref }}
         env:
