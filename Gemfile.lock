@@ -145,6 +145,9 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
+    ffi (1.17.0-x86_64-linux-gnu)
+    font-awesome-sass (6.5.2)
+      sassc (~> 2.0)
     fugit (1.11.0)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -326,6 +329,8 @@ GEM
     rubyzip (2.3.2)
     rufus-scheduler (3.9.1)
       fugit (~> 1.1, >= 1.1.6)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     searchkick (5.3.1)
       activemodel (>= 6.1)
       hashie
@@ -410,6 +415,7 @@ DEPENDENCIES
   devise
   elasticsearch (~> 7.10.1)
   factory_bot_rails
+  font-awesome-sass (~> 6.5.2)
   html2slim
   jbuilder
   jsbundling-rails

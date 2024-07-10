@@ -60,6 +60,7 @@ gem 'devise'
 # Use Kaminari
 gem 'kaminari'
 gem 'bootstrap5-kaminari-views'
+gem "font-awesome-sass", "~> 6.5.2"
 # Use Sidekiq
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
