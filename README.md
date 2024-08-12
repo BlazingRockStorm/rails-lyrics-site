@@ -7,6 +7,13 @@
 - RSpec for test
 - Coding Convention, Code Coverage
 
+## History
+
+Jun 25, 2023: Init project
+              Ruby 3.1, Rails 7.0
+
+Aug 12, 2024: Ruby 3.3, Rails 7.2
+
 ## Why
 ### The idea
  The idea is a lyrics that show the lyrics and the tempo of the song.
