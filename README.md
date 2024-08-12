@@ -2,8 +2,8 @@
 
 - Container
 - PostgreSQL
-- Ruby 3.1
-- Rails 7
+- Ruby 3.1 -> Ruby 3.3
+- Rails 7.0 -> Rails 7.2
 - RSpec for test
 - Coding Convention, Code Coverage
 
