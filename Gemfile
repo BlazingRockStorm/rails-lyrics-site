@@ -59,7 +59,11 @@ gem 'slim-rails'
 gem 'devise'
 # Use Kaminari
 gem 'kaminari'
+# Use Bootstrap
+gem 'bootstrap', '~> 5.3.0'
+gem 'jquery-rails'
 gem 'bootstrap5-kaminari-views'
+# Use FontAwesome
 gem 'font-awesome-sass', '~> 6.5.2'
 # Use Sidekiq
 gem 'sidekiq'
