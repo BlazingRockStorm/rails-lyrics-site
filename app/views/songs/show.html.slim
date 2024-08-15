@@ -26,6 +26,7 @@
           p
             strong Tempo:
             = @song.tempo.to_s + ' BPM'
+            #metronome-button
 
             div[data-controller='metronome']
               input[type="hidden" data-metronome-target="bpm" value="#{@song.tempo}"]
