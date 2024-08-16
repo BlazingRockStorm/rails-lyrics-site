@@ -26,7 +26,7 @@
           p
             strong Tempo:
             = @song.tempo.to_s + ' BPM'
-            = tag.div id: 'metronome-button', data: {tempo: @song.tempo}
+            = tag.div id: 'metronome-button', data: {tempo: @song.tempo, sound: audio_path('drumsticks.mp3') }
 
           div
             strong Lyric:
