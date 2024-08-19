@@ -18,10 +18,6 @@ class ArtistsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_artist
-    @artist = begin
-      Artist.find(params[:id])
-    rescue StandardError
-      not_found
-    end
+    @artist = Artist.find(params[:id])
   end
 end

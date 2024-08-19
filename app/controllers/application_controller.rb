@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  rescue_from Exception, with: :render_500 # rubocop:disable Naming/VariableNumber
-
-  def not_found
-    raise ActionController::RoutingError, 'Not Found'
-  rescue StandardError
-    render_404
-  end
+  # rubocop:disable Naming/VariableNumber
+  rescue_from Exception, with: :render_500 if Rails.env.production?
+  rescue_from ActionController::RoutingError, with: :render_404  if Rails.env.production?
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404 if Rails.env.production?
+  # rubocop:enable Naming/VariableNumber
 
   private
 

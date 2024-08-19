@@ -5,6 +5,4 @@
 import { application } from 'controllers/application'
 
 import ArtistsSongsController from './artists_songs_controller'
-import MetronomeController from './metronome_controller'
 application.register('artists-songs', ArtistsSongsController)
-application.register('metronome', MetronomeController)
