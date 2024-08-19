@@ -26,12 +26,8 @@
           p
             strong Tempo:
             = @song.tempo.to_s + ' BPM'
+            = tag.div id: 'metronome-button', data: {tempo: @song.tempo, sound: audio_path('drumsticks.mp3') }
 
-            div[data-controller='metronome']
-              input[type="hidden" data-metronome-target="bpm" value="#{@song.tempo}"]
-              input[type="hidden" data-metronome-target="sound" value="#{audio_path('drumsticks.mp3')}"]
-              = button_tag '', type: 'button', data: { action: 'metronome#handleClick' }, class: 'btn btn-primary'
-                span[data-metronome-target='tempoButton'] Start metronome for the song
           div
             strong Lyric:
             =< simple_format(@song.lyric)
