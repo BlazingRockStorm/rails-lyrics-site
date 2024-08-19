@@ -1,0 +1,18 @@
+= form_with model: [:admin, @artist], local: true do |form|
+  - if @artist.errors.any?
+    .alert.alert-danger
+      h2 = "#{pluralize(@artist.errors.count, "error")} prohibited this artist from being saved:"
+      ul
+        - @artist.errors.each do |error|
+          li = error.full_message
+
+  .mb-3
+    = form.label :name, class: 'form-label'
+    = form.text_field :name, class: 'form-control'
+
+  .mb-3
+    = form.label :biography, class: 'form-label'
+    = form.text_area :biography, class: 'form-control', rows: 20
+
+  div
+    = form.submit class: 'btn btn-primary'
