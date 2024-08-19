@@ -1,17 +1,17 @@
-== render "layouts/navbar"
+== render 'layouts/navbar'
 
 .container-fluid
   .row.lyrics-site-content
-    == render "layouts/sidebar"
+    == render 'layouts/sidebar'
 
     main.col-md-9.col-lg-10.mt-2.mb-2
       h1 New genre
 
-      == render "form", genre: @genre
+      == render 'form', genre: @genre
 
       br
 
       div
-        = link_to "Back to genres", admin_genres_path, class: 'btn btn-secondary'
+        = link_to 'Back to genres', admin_genres_path, class: 'btn btn-secondary'
 
 == render 'layouts/footer'
