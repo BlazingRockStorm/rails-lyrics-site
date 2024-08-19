@@ -18,10 +18,6 @@ class AlbumsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_album
-    @album = begin
-      Album.find(params[:id])
-    rescue StandardError
-      not_found
-    end
+    @album = Album.find(params[:id])
   end
 end
