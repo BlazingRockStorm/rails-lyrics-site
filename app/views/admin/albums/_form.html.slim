@@ -1,0 +1,22 @@
+= form_with model: [:admin, @album], local: true do |form|
+  - if @album.errors.any?
+    .alert.alert-danger
+      h2 = "#{pluralize(@album.errors.count, "error")} prohibited this album from being saved:"
+      ul
+        - @album.errors.each do |error|
+          li = error.full_message
+
+  .mb-3
+    = form.label :name, class: 'form-label'
+    = form.text_field :name, class: 'form-control'
+
+  .mb-3
+    = form.label :artist_id, class: 'form-label'
+    = form.select :artist_id, Artist.all.collect {|artist| [ artist.name, artist.id ] }, {}, class: 'form-control'
+
+  .mb-3
+    = form.label :release_year, class: 'form-label'
+    = form.number_field :release_year, class: 'form-control'
+
+  div
+    = form.submit class: 'btn btn-primary'
