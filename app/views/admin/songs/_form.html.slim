@@ -20,9 +20,12 @@
 
   = form.fields_for :artists_songs do |artists_song_form|
     .mb-3
-      = artists_song_form.label 'Main Artist', class: 'form-label'
+      = artists_song_form.label 'Artist', class: 'form-label'
       = artists_song_form.select :artist_id, Artist.all.collect {|artist| [ artist.name, artist.id ] }, {}, class: 'form-control'
       = artists_song_form.select :artist_type, ['main','featuring'], {}, class: 'form-control'
+
+  = button_tag 'Add Featuring Artist', type: 'button', class: 'btn btn-link mb-3'
+  = button_tag 'Remove Featuring Artist', type: 'button', class: 'btn btn-secondary mb-3'
 
   .mb-3
     = form.label :genre_id, class: 'form-label'
