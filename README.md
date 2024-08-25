@@ -44,3 +44,5 @@ Aug 19, 2024: Ruby 3.3, Rails 7.2, React 18.3.1
 
 - The test for how the app works, so it must run more stable.
 - Take times.
+
+test pull
