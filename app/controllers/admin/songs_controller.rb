@@ -19,6 +19,7 @@ module Admin
     # GET /songs/new
     def new
       @song = Song.new
+      2.times { @song.artists_songs.build }
     end
 
     # GET /songs/1/edit
@@ -54,6 +55,7 @@ module Admin
 
     # DELETE /songs/1 or /songs/1.json
     def destroy
+      @song.artists_songs.destroy_all
       @song.destroy
 
       respond_to do |format|

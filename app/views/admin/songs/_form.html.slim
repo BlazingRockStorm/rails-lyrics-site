@@ -1,0 +1,43 @@
+= form_with model: [:admin, @song], local: true do |form|
+  - if @song.errors.any?
+    .alert.alert-danger
+      h2 = "#{pluralize(@song.errors.count, "error")} prohibited this song from being saved:"
+      ul
+        - @song.errors.each do |error|
+          li = error.full_message
+
+  .mb-3
+    = form.label :name, class: 'form-label'
+    = form.text_field :name, class: 'form-control'
+
+  .mb-3
+    = form.label :link, class: 'form-label'
+    = form.text_field :link, class: 'form-control'
+
+  .mb-3
+    = form.label :tempo, class: 'form-label'
+    = form.number_field :tempo, class: 'form-control'
+
+  = form.fields_for :artists_songs do |artists_song_form|
+    .mb-3
+      = artists_song_form.label 'Artist', class: 'form-label'
+      = artists_song_form.select :artist_id, Artist.all.collect {|artist| [ artist.name, artist.id ] }, {}, class: 'form-control'
+      = artists_song_form.select :artist_type, ['main','featuring'], {}, class: 'form-control'
+
+  = button_tag 'Add Featuring Artist', type: 'button', class: 'btn btn-link mb-3'
+  = button_tag 'Remove Featuring Artist', type: 'button', class: 'btn btn-secondary mb-3'
+
+  .mb-3
+    = form.label :genre_id, class: 'form-label'
+    = form.select :genre_id, Genre.all.collect {|genre| [ genre.name, genre.id ] }, {}, class: 'form-control'
+
+  .mb-3
+    = form.label :album_id, class: 'form-label'
+    = form.select :album_id, Album.all.collect {|album| [ album.name, album.id ] }, {}, class: 'form-control'
+
+  .mb-3
+    = form.label :lyric, class: 'form-label'
+    = form.text_area :lyric, class: 'form-control', rows: 20
+
+  div
+    = form.submit class: 'btn btn-primary'
