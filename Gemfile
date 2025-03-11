@@ -17,8 +17,8 @@ gem 'pg', '~> 1.1'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 6.0'
 
-# Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
-gem 'jsbundling-rails'
+# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem 'importmap-rails'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails'
@@ -59,7 +59,11 @@ gem 'slim-rails'
 gem 'devise'
 # Use Kaminari
 gem 'kaminari'
+# Use Bootstrap
+gem 'bootstrap', '~> 5.3.0'
+gem 'jquery-rails'
 gem 'bootstrap5-kaminari-views'
+# Use FontAwesome
 gem 'font-awesome-sass', '~> 6.5.2'
 # Use Sidekiq
 gem 'sidekiq'
